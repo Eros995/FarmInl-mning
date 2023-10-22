@@ -12,6 +12,8 @@ namespace FarmInlämning
             Console.WriteLine("yello");
             Console.WriteLine("Hej!");
 
+            Console.WriteLine("1234");
+
             Console.WriteLine("hello world");
         }
     }
