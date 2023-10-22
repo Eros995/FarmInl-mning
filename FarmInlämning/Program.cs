@@ -11,7 +11,7 @@ namespace FarmInlämning
         static void Main(string[] args)
         {
          Farm farm = new Farm();
-            farm.Mainmenu();
+         farm.Mainmenu();
         }
     }
 }
