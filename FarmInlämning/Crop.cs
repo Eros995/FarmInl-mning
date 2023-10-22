@@ -15,9 +15,10 @@ namespace FarmInlämning
         private int Quantity;
         List <Crop> crop = new List<Crop>();
 
-        public Crop(string aName, string, string aCropType, int aQuantity)
+        public Crop(string aName, int aId, string aCropType, int aQuantity)
+            :base (aName, aId)
         {
-            Crop crop1 = new Crop("vattenmelon", 20);
+            Crop crop1 = new Crop("vattenmelon",1001 , "frukt", 20);
             CropType = aCropType;
             Quantity = aQuantity;
 
@@ -27,7 +28,7 @@ namespace FarmInlämning
         }
         public override void GetDescription()
         {
-            string CropInfo ("The type of crop is: " + cropType + " and the Quantity of them are: " + quantity );
+            string CropInfo("The type of crop is: " + aCropType + " and the Quantity of them are: " + aQuantity);
             Console.WriteLine(CropInfo);
         }
     }
