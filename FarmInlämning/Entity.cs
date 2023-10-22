@@ -9,9 +9,9 @@ namespace FarmInlämning
     internal class Entity
     {
         protected string Name{get; set;}
-        public string Id{get; set;}
+        public int Id{get; set;}
 
-        public Entity(string aName, string aId)
+        public Entity(string aName, int aId)
         {
             Name = aName;
             Id = aId;
