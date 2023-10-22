@@ -21,18 +21,18 @@ namespace FarmInlämning
             Crop crop1 = new Crop("Vattenmelon",1001 , "Frukt", 20);
             Crop crop2 = new Crop("Jordgubbe",1002 , "Bär", 15);
             Crop crop3 = new Crop("Äpple",1003 , "Frukt", 25);
-            
+
             CropType = aCropType;
             Quantity = aQuantity;
         }
 
-        }
-        public override void GetDescription()
+    }
+        /*public override void GetDescription()
         {
             string CropInfo("The type of crop is: " + aCropType + " and the Quantity of them are: " + aQuantity);
             Console.WriteLine(CropInfo);
-        }
+        }*/
 
 
-    }
 }
+
