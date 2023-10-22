@@ -10,12 +10,6 @@ namespace FarmInlämning
 
             Console.ReadLine();
             Console.WriteLine("yello");
-            Console.WriteLine("yello");
-            Console.WriteLine("yello");
-            Console.WriteLine("yello");
-            Console.WriteLine("yello");
-            Console.WriteLine("yello");
-            Console.WriteLine("yello");
             Console.WriteLine("Hej!");
 
             Console.WriteLine("hello world");
