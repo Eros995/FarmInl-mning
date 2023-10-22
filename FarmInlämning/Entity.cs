@@ -8,15 +8,15 @@ namespace FarmInlämning
 {
     internal class Entity
     {
-        protected string name;
-        public string id;
+        protected string Name{get; set;}
+        public string Id{get; set;}
 
         public Entity(string aName, string aId)
         {
-            name = aName;
-            id = aId;
+            Name = aName;
+            Id = aId;
         }
 
-        public abstract void GetDescritpion();
+        public abstract void GetDescription();
     }
 }
