@@ -10,6 +10,7 @@ namespace FarmInlämning
     internal class Animal : Entity
 
     {
+
         public string Species { get; set; }
         private string AcceptableCropTypes { get; set; }
 
@@ -38,6 +39,9 @@ namespace FarmInlämning
 
 
 
+
+
+        
 
     }
 }
