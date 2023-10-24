@@ -9,7 +9,18 @@ using System.Threading.Tasks;
 namespace FarmInlämning
 {
     internal class CropManager
+
     {
+        List<Crop> crops = new List<Crop>();
+        public CropManager()
+        {
+            crops.Add(new Crop( "egg", 12,  "food", 5));
+            Crop crop1 = new Crop("Vattenmelon", 1001, "Frukt", 20);
+            Crop crop2 = new Crop("Jordgubbe", 1002, "Bär", 15);
+            Crop crop3 = new Crop("Äpple", 1003, "Frukt", 25);
+            
+
+        }
         public void CropManagerMenu()
         {
             Console.WriteLine("What would you like to do? ");
@@ -46,6 +57,7 @@ namespace FarmInlämning
 
         private void ViewCrop()
         {
+            if (crops.Count == 0) { }
 
 
         }
