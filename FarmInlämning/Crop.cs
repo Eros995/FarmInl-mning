@@ -11,8 +11,9 @@ namespace FarmInlämning
     internal class Crop : Entity
     {
 
-        public string CropType;
-        private int Quantity;
+        public string CropType{ get; set; }
+        private int Quantity{ get; set; } = 0;
+
         List <Crop> crop = new List<Crop>();
 
         public Crop(string aName, int aId, string aCropType, int aQuantity)
@@ -22,16 +23,20 @@ namespace FarmInlämning
             Crop crop2 = new Crop("Jordgubbe",1002 , "Bär", 15);
             Crop crop3 = new Crop("Äpple",1003 , "Frukt", 25);
 
-            CropType = aCropType;
-            Quantity = aQuantity;
+            aName = Name;
+            aId = Id;
+            aCropType = CropType;
+            aQuantity = Quantity;
         }
 
-    }
-        /*public override void GetDescription()
+        public override void GetDescritpion()
         {
-            string CropInfo("The type of crop is: " + aCropType + " and the Quantity of them are: " + aQuantity);
-            Console.WriteLine(CropInfo);
-        }*/
+            string description = "Name: " + Name + "Id: "+ Id + "Type: " + CropType + "Amount: " + Quantity;
+            Console.WriteLine(description);
+        }
+       
+    }
+        
 
 
 }
