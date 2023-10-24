@@ -25,10 +25,12 @@ namespace FarmInlämning
             switch(choise)
             {
                 case "1":
-                    Console.WriteLine();
+                    Console.WriteLine("Which crop do you want to see?");
+                    ViewCrop();
                     break;
                 case "2":
-                    Console.WriteLine();
+                    Console.WriteLine("What crop do you want to add?");
+                    AddCrop();
                     break;
                 case "3":
                     Console.WriteLine();
@@ -38,11 +40,30 @@ namespace FarmInlämning
                     break;
             }
             
-            private void ViewCrop()
-            {
-                
-            }
+            
             
         }
+
+        private void ViewCrop()
+        {
+
+
+        }
+
+        private void AddCrop()
+        {
+
+        }
+
+        private void RemoveCrop()
+        {
+
+        }
+
+        /*public GetCrop()
+        {
+            
+             
+        }*/
     }
 }
