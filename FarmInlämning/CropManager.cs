@@ -57,8 +57,19 @@ namespace FarmInlämning
 
         private void ViewCrop()
         {
-            if (crops.Count == 0) { }
-
+            if (crops.Count == 0)
+            {
+                Console.WriteLine("No crops available.");
+            }
+            else
+            {
+                foreach (Crop crop in crops)
+                {
+                    Console.WriteLine("Crop: " + crop.);
+                    Console.WriteLine("");
+                    Console.WriteLine("");
+                }
+            }
 
         }
 
@@ -72,10 +83,10 @@ namespace FarmInlämning
 
         }
 
-        /*public GetCrop()
+        public void Getname()
         {
-            
-             
-        }*/
+         Crop cropsname = new Crop();
+       
+        }
     }
 }

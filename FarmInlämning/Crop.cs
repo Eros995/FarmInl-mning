@@ -14,7 +14,7 @@ namespace FarmInlämning
         public string CropType{ get; set; }
         private int Quantity{ get; set; } = 0;
 
-        List <Crop> crop = new List<Crop>();
+        public List <Crop> crops = new List<Crop>(); 
 
         public Crop(string aName, int aId, string aCropType, int aQuantity)
             :base (aName, aId)
@@ -34,7 +34,12 @@ namespace FarmInlämning
             string description = "Name: " + Name + "Id: "+ Id + "Type: " + CropType + "Amount: " + Quantity;
             Console.WriteLine(description);
         }
-       
+
+        protected string cropsname
+        {
+            get { return Name; }
+            set { Name = value; }
+        }
     }
         
 
