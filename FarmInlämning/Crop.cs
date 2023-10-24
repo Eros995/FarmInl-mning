@@ -30,11 +30,13 @@ namespace FarmInlämning
             Console.WriteLine(description);
         }
 
-        protected string cropsname
+        public string CropsName
         {
             get { return Name; }
             set { Name = value; }
         }
+
+        public static string CropName { get; internal set; }
     }
         
 
