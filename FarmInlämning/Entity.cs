@@ -18,5 +18,7 @@ namespace FarmInlämning
         }
 
         public abstract void GetDescription();
+
+        
     }
 }

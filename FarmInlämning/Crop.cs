@@ -12,7 +12,7 @@ namespace FarmInlämning
     {
 
         public string CropType{ get; set; }
-        private int Quantity{ get; set; } = 0;
+        private int Quantity{ get; set; } 
  
 
         public Crop(string aName, int aId, string aCropType, int aQuantity)
@@ -35,6 +35,15 @@ namespace FarmInlämning
             get { return Name; }
             set { Name = value; }
         }
+
+        public int GetCropQuantity()
+        { return Quantity; }
+
+        public void SetCropQuantity(int value)
+        { Quantity = value; }
+
+       
+        
 
         public static string CropName { get; internal set; }
     }

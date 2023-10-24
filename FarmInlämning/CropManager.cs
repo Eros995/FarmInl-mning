@@ -29,7 +29,7 @@ namespace FarmInlämning
             Console.WriteLine("3. Remove Crop. ");
             Console.WriteLine("4. Get Crops. ");
 
-
+            
             string cropName = Crop.CropName;
             string choice = Console.ReadLine();
 
@@ -66,7 +66,7 @@ namespace FarmInlämning
                 foreach (Crop crop in crops)
                 {
                     Console.WriteLine("Crop: " + Crop.CropName  );
-                    Console.WriteLine("");
+                    Console.WriteLine("Quantity" + crop.GetCropQuantity());
                     Console.WriteLine("");
                 }
             }
