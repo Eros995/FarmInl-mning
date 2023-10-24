@@ -13,16 +13,11 @@ namespace FarmInlämning
 
         public string CropType{ get; set; }
         private int Quantity{ get; set; } = 0;
-
-        public List <Crop> crops = new List<Crop>(); 
+ 
 
         public Crop(string aName, int aId, string aCropType, int aQuantity)
             :base (aName, aId)
         {
-            Crop crop1 = new Crop("Vattenmelon",1001 , "Frukt", 20);
-            Crop crop2 = new Crop("Jordgubbe",1002 , "Bär", 15);
-            Crop crop3 = new Crop("Äpple",1003 , "Frukt", 25);
-
             aName = Name;
             aId = Id;
             aCropType = CropType;
