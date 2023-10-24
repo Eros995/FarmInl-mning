@@ -7,6 +7,14 @@ using System.Threading.Tasks;
 namespace FarmInlämning
 {
     internal class AnimalManager
-    {
+    { 
+        public void AnimalManagerMenu()
+        {
+
+
+        }
+        
+
+
     }
 }

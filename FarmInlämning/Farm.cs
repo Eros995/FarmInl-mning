@@ -8,6 +8,7 @@ namespace FarmInlämning
 {
     internal class Farm
     {
+        
 
         internal void Mainmenu()
         {

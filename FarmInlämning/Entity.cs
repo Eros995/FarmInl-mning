@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace FarmInlämning
 {
-    internal class Entity
+    internal abstract class Entity
     {
         protected string Name{get; set;}
         public int Id{get; set;}
