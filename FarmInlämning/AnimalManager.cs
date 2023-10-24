@@ -10,7 +10,7 @@ namespace FarmInlämning
     { 
         public void AnimalManagerMenu()
         {
-
+            Console.WriteLine();
 
         }
         
