@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.ComponentModel.Design;
 using System.Linq;
+using System.Reflection.Metadata.Ecma335;
 using System.Security.Cryptography.X509Certificates;
 using System.Text;
 using System.Threading.Tasks;
@@ -30,10 +31,10 @@ namespace FarmInlämning
             Console.WriteLine("4. Get Crops. ");
 
             
-            string cropName = Crop.CropName;
-            string choice = Console.ReadLine();
 
-            switch(choice)
+            string choise = Console.ReadLine();
+
+            switch(choise)
             {
                 case "1":
                     Console.WriteLine("Which crop do you want to see?");
@@ -65,8 +66,8 @@ namespace FarmInlämning
             {
                 foreach (Crop crop in crops)
                 {
-                    Console.WriteLine("Crop: " + Crop.CropName  );
-                    Console.WriteLine("Quantity" + crop.GetCropQuantity());
+                    Console.WriteLine("Crop: " + crop.Name);
+                    Console.WriteLine("");
                     Console.WriteLine("");
                 }
             }
@@ -83,6 +84,13 @@ namespace FarmInlämning
 
         }
 
-  
+        public void Getname()
+        {
+
+
+         Crop cropsname = new Crop();
+       
+        }
+
     }
 }
