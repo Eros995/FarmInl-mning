@@ -30,11 +30,10 @@ namespace FarmInlämning
             Console.WriteLine("3. Remove Crop. ");
             Console.WriteLine("4. Get Crops. ");
 
-            
+           string cropName = Crop.CropName;
+           string choice = Console.ReadLine(); 
 
-            string choise = Console.ReadLine();
-
-            switch(choise)
+            switch(choice)
             {
                 case "1":
                     Console.WriteLine("Which crop do you want to see?");
@@ -66,8 +65,8 @@ namespace FarmInlämning
             {
                 foreach (Crop crop in crops)
                 {
-                    Console.WriteLine("Crop: " + crop.Name);
-                    Console.WriteLine("");
+                    Console.WriteLine("Crop: " + Crop.CropName  );
+                    Console.WriteLine("Quantity" + crop.GetCropQuantity());
                     Console.WriteLine("");
                 }
             }
