@@ -89,32 +89,31 @@ namespace FarmInlämning
         private void RemoveCrop()
         {
             System.Console.WriteLine("What kind of crop do you want to remove: ");
-            int idRemoveCrop;
-            if (!int.TryParse(Console.ReadLine(), out idRemoveCrop))
+            int cropIdToRemove;
+            if (!int.TryParse(Console.ReadLine(), out int cropIdToRemove))
             {
-                Console.WriteLine("invaldi input of Crop");
+                Console.WriteLine("invalid ID input ");
                 return;
             }
 
             int indexToRemove = -1;
             for(int i = 0; i < crops.Count; i++)
             {
-                if(crops[i].GetCropId() == idRemoveCrop)
+                if(crops[i].Id() == cropIdToRemove)
                 {
                     indexToRemove = i;
                     break;
                 }
             }
-            if(idRemoveCrop != -1)
+            if(cropIdToRemove != -1)
             {
                 crops.RemoveAt(indexToRemove);
-                System.Console.WriteLine("Crop with ID: " + idRemoveCrop + ", successfully removed!");
+                Console.WriteLine("Crop with ID: " + cropIdToRemove + ", successfully removed!");
             }
             else
             {
-                System.Console.WriteLine("Crop with ID: " + idRemoveCrop + " was not found!");
+                Console.WriteLine("Crop with ID: " + cropIdToRemove + " was not found!");
             }
-
         }
 
       
