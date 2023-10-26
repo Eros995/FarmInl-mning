@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Internal;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Security.Cryptography.X509Certificates;
@@ -28,7 +29,14 @@ namespace FarmInlämning
 
         public override void GetDescription()
         {
+            string description "Name: " + Name + "Id: " + Id + "Species: " + Species + "acceptableCropType";
+            Console.writeline(description);
             
+        }
+
+        public void AnimalName()
+        {
+            {}
         }
     }
 }
