@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace FarmInlämning
 {
-    internal class CropManager
+    public class CropManager
 
     {
         List<Crop> crops = new List<Crop>();
@@ -30,24 +30,21 @@ namespace FarmInlämning
             Console.WriteLine("3. Remove Crop. ");
             Console.WriteLine("4. Get Crops. ");
 
-           string cropName = Crop.CropName;
            string choice = Console.ReadLine(); 
 
             switch(choice)
             {
                 case "1":
-                    Console.WriteLine("Which crop do you want to see?");
                     ViewCrop();
                     break;
                 case "2":
-                    Console.WriteLine("What crop do you want to add?");
                     AddCrop();
                     break;
                 case "3":
-                    Console.WriteLine();
+                    RemoveCrop();
                     break;
                 case "4":
-                    Console.WriteLine();
+                     
                     break;
             }
             
@@ -65,7 +62,7 @@ namespace FarmInlämning
             {
                 foreach (Crop crop in crops)
                 {
-                    Console.WriteLine("Crop: " + Crop.CropName  );
+                    Console.WriteLine("Crop: " + Crop.CropName);
                     Console.WriteLine("Quantity" + crop.GetCropQuantity());
                     Console.WriteLine("");
                 }
