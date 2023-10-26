@@ -8,14 +8,8 @@ namespace FarmInlämning
 {
     public class Farm
     {
-        public CropManager cropManager;
 
-        public Farm(CropManager cropManager)
-        {
-            this.cropManager = cropManager;
-        }
 
-        
         public void Mainmenu()
         {
             bool running = true;
@@ -36,7 +30,7 @@ namespace FarmInlämning
                         break;
 
                     case "2":
-                        cropManager.CropManagerMenu();
+                        CropManagerMenu();
                         break;
 
                     case "3":

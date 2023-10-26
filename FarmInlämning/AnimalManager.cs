@@ -12,6 +12,7 @@ using Internal;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -19,23 +20,67 @@ namespace FarmInlämning
 {
     internal class AnimalManager
     { 
-        List<Animals> animal = new List<Animals> ();
+       
+
+
+    {
+        List<Animal> animals = new List<Animal> ();
+        public AnimalManager()
+        {
+            animals.Add(new Animal("Carl", 123, "Dog", "Dog food"));
+
+
+        }
+
         public void AnimalManagerMenu()
         {
-            Console.WriteLine("What would you like to do? ");
-            Console.WriteLine("1. View Animals. ");
-            Console.WriteLine("2. Add Animals. ");
-            Console.WriteLine("3. Remove Animals. ");
-            Console.WriteLine("4. Feed Aniamls. ");
-            
-            public string choice = Console.ReadLine();
+            Console.WriteLine("What would you like to do?");
+            Console.WriteLine("1. View animal");
+            Console.WriteLine("2. Add animal");
+            Console.WriteLine("3. Remove animal");
+            Console.WriteLine("4. Feed animal");
+            string input = Console.ReadLine();
 
-            Switch (choice)
+            switch (input)
             {
                 case "1":
-                    System.Console.WriteLine();
+                    ViewAnimal();
+                    break;
+
+                case "2":
+                    AddAnimal();
+                    break;
+
+                case "3":
+                    RemoveAnimal();
+                    break;
+
+                case "4":
+                    FeedAnimal();
+                    break;
+
+
+
+
             }
 
+        }
+
+        private void AddAnimal()
+        {
+
+
+        }
+
+
+        private void RemoveAnimal()
+        {
+
+
+        }
+
+        private void FeedAnimal()
+        {
 
         }
         private void ViewAnimals()
@@ -51,20 +96,6 @@ namespace FarmInlämning
             }
 
         }
-        private void AddAnimal()
-        {
-
-        }
-        private void RemoveAnimal()
-        {
-
-        }
-        private void FeedAnimals()
-        {
-
-        }
-
-        
 
 
     }

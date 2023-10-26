@@ -32,6 +32,7 @@ namespace FarmInlämning
             string description "Name: " + Name + "Id: " + Id + "Species: " + Species + "acceptableCropType" acceptableCropType;
             Console.WriteLine(description);
             
+
         }
 
         public string AnimalName
@@ -39,5 +40,11 @@ namespace FarmInlämning
             get{ return; Name}
             set{Name = value;}
         }
+
+            
+        
+
+        
+
     }
 }
