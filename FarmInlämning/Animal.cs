@@ -33,7 +33,7 @@ namespace FarmInlämning
 
         public override void GetDescription()
         {
-            string description "Name: " + Name + "Id: " + Id + "Species: " + Species + "acceptableCropType" + AcceptableCropTypes;
+            string description = "Name: " + Name + "Id: " + Id + "Species: " + Species + "acceptableCropType" + AcceptableCropTypes;
             Console.WriteLine(description);
             
 
