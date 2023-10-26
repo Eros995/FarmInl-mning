@@ -13,11 +13,15 @@ namespace FarmInlämning
         public string Species { get; set; }
         private string AcceptableCropTypes { get; set; }
 
-        public Animal(string aName, int aId, string species, string acceptableCropTypes)
+        public Animal(string aName, int aId, string aSpecies, string aAcceptableCropTypes)
             : base(aName, aId)
         {
             Species = species;
             AcceptableCropTypes = acceptableCropTypes;
+            aName = Name;
+            aId = Id;
+            aSpecies = Species;
+            aAcceptableCropTypes = AcceptableCropTypes;
         
         
         }
@@ -29,7 +33,7 @@ namespace FarmInlämning
 
         public override void GetDescription()
         {
-            string description "Name: " + Name + "Id: " + Id + "Species: " + Species + "acceptableCropType" acceptableCropType;
+            string description "Name: " + Name + "Id: " + Id + "Species: " + Species + "acceptableCropType" + AcceptableCropTypes;
             Console.WriteLine(description);
             
 
@@ -41,7 +45,8 @@ namespace FarmInlämning
             set{Name = value;}
         }
 
-            
+        public static string AnimalName { get; internal set; }
+
         
 
         
