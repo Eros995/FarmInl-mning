@@ -42,7 +42,8 @@ namespace FarmInlämning
         public void SetCropQuantity(int value)
         { Quantity = value; }
 
-       
+        public string GetCropType()
+        { return CropType; }
         
 
         public static string CropName { get; internal set; }

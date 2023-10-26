@@ -64,6 +64,7 @@ namespace FarmInlämning
                 foreach (Crop crop in crops)
                 {
                     Console.WriteLine("Crop: " + Crop.CropName);
+                    Console.WriteLine("Crop type " + crop.GetCropType());
                     Console.WriteLine("Quantity" + crop.GetCropQuantity());
                     Console.WriteLine("");
                 }
