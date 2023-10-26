@@ -82,15 +82,50 @@ namespace FarmInlämning
         }
 
         private void AddCrop()
-        
-            System.Console.WriteLine("hello");
+        {
+            Console.WriteLine("Enter the name of the new crop:");
+            string name = Console.ReadLine();
 
+            Console.WriteLine("Enter the crop type:");
+            string cropType = Console.ReadLine();
+
+            int quantity = 0;
+            bool validQuantity = false;
+
+            while (!validQuantity)
+            {
+                try
+                {
+                    Console.WriteLine("Enter the quantity:");
+                    quantity = int.Parse(Console.ReadLine());
+                    validQuantity = true;
+                }
+                catch (FormatException)
+                {
+                    Console.WriteLine("Invalid quantity. Please enter a valid number.");
+                }
+            }
+
+            try
+            {
+                int maxId = crops.Max(crop => crop.GetCropId());
+                Crop newCrop = new Crop(name, maxId, cropType, quantity);
+                crops.Add(newCrop);
+                Console.WriteLine("New crop added successfully!");
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("An error occurred while adding the crop: " + ex.Message);
+            }
         }
+
+    
 
         private void RemoveCrop()
         {
             System.Console.WriteLine("What kind of crop do you want to remove: ");
             int cropIdToRemove;
+            cropIdToRemove=int.Parse(Console.ReadLine());
             if (!int.TryParse(Console.ReadLine(), out int cropIdToRemove))
             {
                 Console.WriteLine("invalid ID input ");
@@ -100,7 +135,7 @@ namespace FarmInlämning
             int indexToRemove = -1;
             for(int i = 0; i < crops.Count; i++)
             {
-                if(crops[i].Id() == cropIdToRemove)
+                if(crops[i].GetCropId() == cropIdToRemove)
                 {
                     indexToRemove = i;
                     break;

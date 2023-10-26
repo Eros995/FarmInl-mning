@@ -18,6 +18,8 @@ namespace FarmInlämning
         public Crop(string aName, int aId, string aCropType, int aQuantity)
             :base (aName, aId)
         {
+            Name = aName;
+            Id = aId;
             CropType = aCropType;
             Quantity = aQuantity;
         }
@@ -43,8 +45,7 @@ namespace FarmInlämning
         public string GetCropType()
         { return CropType; }
         
-
-        public static string CropName { get; internal set; }
+        public int GetCropId() { return Id; }
     }
         
 
