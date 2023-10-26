@@ -1,29 +1,18 @@
-﻿using Internal;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Security.Cryptography.X509Certificates;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace FarmInlämning
+﻿namespace FarmInlämning
 {
     internal class Animal : Entity
     {
-        public string Species { get; set; }
+       private string Species { get; set; }
         private string AcceptableCropTypes { get; set; }
 
-        public static string AnimalName { get; internal set; }
+        public string AnimalName { get; set; }
 
         public Animal(string aName, int aId, string aSpecies, string aAcceptableCropTypes)
             : base(aName, aId)
         {
-            Species = species;
-            AcceptableCropTypes = acceptableCropTypes;
-            aName = Name;
-            aId = Id;
-            aSpecies = Species;
-            aAcceptableCropTypes = AcceptableCropTypes;
+            
+            Species = aSpecies;
+            AcceptableCropTypes = aAcceptableCropTypes;
         
         
         }
@@ -41,11 +30,7 @@ namespace FarmInlämning
         }
 
 
-        public string AnimalaName
-        {
-            get{ return; Animal.AnimalNameName}
-            set{Name = value;}
-        }
+       
 
 
         
