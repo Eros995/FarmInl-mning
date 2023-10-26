@@ -68,6 +68,20 @@ namespace FarmInlämning
 
         private void AddAnimal()
         {
+            Console.WriteLine("What is the name?");
+            string name = Console.ReadLine();
+
+            Console.WriteLine("What is the Id?");
+            int id = Convert.ToInt32(Console.ReadLine());
+
+            Console.WriteLine("What is the species?");
+            string species = Console.ReadLine();
+
+            Console.WriteLine("What is the acceptable crop type?");
+            string acceptableCropType = Console.ReadLine();
+
+            animals.Add(new Animal(name, id, species, acceptableCropType));
+            Console.WriteLine(name + " was added!");
 
 
         }
