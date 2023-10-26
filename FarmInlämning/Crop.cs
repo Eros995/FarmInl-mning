@@ -18,10 +18,8 @@ namespace FarmInlämning
         public Crop(string aName, int aId, string aCropType, int aQuantity)
             :base (aName, aId)
         {
-            aName = Name;
-            aId = Id;
-            aCropType = CropType;
-            aQuantity = Quantity;
+            CropType = aCropType;
+            Quantity = aQuantity;
         }
 
         public override void GetDescription()
