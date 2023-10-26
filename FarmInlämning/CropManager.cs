@@ -74,6 +74,7 @@ namespace FarmInlämning
                     Console.WriteLine("Name: " + crop.CropsName);
                     Console.WriteLine("Crop type: " + crop.GetCropType());
                     Console.WriteLine("Quantity: " + crop.GetCropQuantity());
+                    Console.WriteLine("CropId: " + crop.GetCropId());
                     Console.WriteLine("");
                     index++;
                 }
@@ -109,7 +110,7 @@ namespace FarmInlämning
             try
             {
                 int maxId = crops.Max(crop => crop.GetCropId());
-                Crop newCrop = new Crop(name, maxId, cropType, quantity);
+                Crop newCrop = new Crop(name, maxId++, cropType, quantity);
                 crops.Add(newCrop);
                 Console.WriteLine("New crop added successfully!");
             }
@@ -124,8 +125,7 @@ namespace FarmInlämning
         private void RemoveCrop()
         {
             System.Console.WriteLine("What kind of crop do you want to remove: ");
-            int cropIdToRemove;
-            cropIdToRemove=int.Parse(Console.ReadLine());
+            
             if (!int.TryParse(Console.ReadLine(), out int cropIdToRemove))
             {
                 Console.WriteLine("invalid ID input ");
