@@ -25,30 +25,36 @@ namespace FarmInlämning
         }
         public void CropManagerMenu()
         {
-            Console.WriteLine("What would you like to do? ");
-            Console.WriteLine("1. View Crops. ");
-            Console.WriteLine("2. Add Crop. ");
-            Console.WriteLine("3. Remove Crop. ");
-            Console.WriteLine("4. Get Crops. ");
-
-           string choice = Console.ReadLine(); 
-
-            switch(choice)
+            bool croprunning = true;
+            while (croprunning)
             {
-                case "1":
-                    ViewCrop();
-                    break;
-                case "2":
-                    AddCrop();
-                    break;
-                case "3":
-                    RemoveCrop();
-                    break;
-                case "4":
-                     
-                    break;
+                Console.WriteLine("What would you like to do? ");
+                Console.WriteLine("1. View Crops. ");
+                Console.WriteLine("2. Add Crop. ");
+                Console.WriteLine("3. Remove Crop. ");
+                Console.WriteLine("4. Get Crops. ");
+                Console.WriteLine("5. Quit ");
+
+                string choice = Console.ReadLine();
+
+                switch (choice)
+                {
+                    case "1":
+                        ViewCrop();
+                        break;
+                    case "2":
+                        AddCrop();
+                        break;
+                    case "3":
+                        RemoveCrop();
+                        break;
+                    case "4":
+
+                    case "5":
+                        croprunning = false;
+                         break;
+                }
             }
-            
             
             
         }
@@ -61,12 +67,15 @@ namespace FarmInlämning
             }
             else
             {
+                int index = 1;
                 foreach (Crop crop in crops)
                 {
-                    Console.WriteLine("Crop: " + Crop.CropName);
-                    Console.WriteLine("Crop type " + crop.GetCropType());
-                    Console.WriteLine("Quantity" + crop.GetCropQuantity());
+                    Console.WriteLine("Crop " + index + ":");
+                    Console.WriteLine("Name: " + crop.CropsName);
+                    Console.WriteLine("Crop type: " + crop.GetCropType());
+                    Console.WriteLine("Quantity: " + crop.GetCropQuantity());
                     Console.WriteLine("");
+                    index++;
                 }
             }
 
