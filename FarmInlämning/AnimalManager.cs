@@ -1,30 +1,12 @@
-﻿using System.Runtime.Serialization.Json;
-using System.ComponentModel.Design.Serialization;
-using System.Reflection;
-using System.Runtime.InteropServices;
-using System.Reflection.Metadata;
-using System.Net.Http.Headers;
-using System.Collections.Concurrent;
-using System.Runtime.Serialization;
-using System.Reflection.Emit;
-using System.Data;
-using Internal;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Runtime.CompilerServices;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace FarmInlämning
+﻿namespace FarmInlämning
 {
     internal class AnimalManager
     { 
        
 
 
-    {
-        List<Animal> animals = new List<Animal> ();
+    
+        List<Animal> animals = new List<Animal>();
         public AnimalManager()
         {
             animals.Add(new Animal("Carl", 123, "Dog", "Dog food"));
@@ -97,7 +79,7 @@ namespace FarmInlämning
         {
 
         }
-        private void ViewAnimals()
+        private void ViewAnimal()
         {
             if (animals.Count == 0)
             {
@@ -106,11 +88,12 @@ namespace FarmInlämning
             }
             else
             {
-                foreach(Animal animal in animals);
+                foreach (Animal animal in animals) ;
             }
 
-        }//a
+        }
 
 
     }
 }
+
