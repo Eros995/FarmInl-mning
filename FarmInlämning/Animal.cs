@@ -28,7 +28,17 @@ namespace FarmInlämning
 
         public override void GetDescription()
         {
-            
+            string description "Name: " + Name + "Id: " + Id + "Species: " + Species + "AcceptableCropType" + AcceptableCropTypes;
+            Console.WriteLine(description);
+
         }
+
+        public string AnimalName
+        {
+            get { return; Name }
+            set { Name = value; }
+        }
+
+        
     }
 }
