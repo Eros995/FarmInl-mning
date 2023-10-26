@@ -83,13 +83,7 @@ namespace FarmInlämning
 
         }
 
-        public void Getname()
-        {
-
-
-         Crop cropsname = new Crop();
-       
-        }
+      
 
     }
 }

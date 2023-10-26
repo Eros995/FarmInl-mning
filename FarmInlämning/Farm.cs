@@ -6,11 +6,11 @@ using System.Threading.Tasks;
 
 namespace FarmInlämning
 {
-    internal class Farm
+    public class Farm
     {
-        
 
-        internal void Mainmenu()
+
+        public void Mainmenu()
         {
             bool running = true;
             while (running)
@@ -20,6 +20,7 @@ namespace FarmInlämning
                 Console.WriteLine("2. Access the Crop Manager");
                 Console.WriteLine("3. Exit");
                 Console.WriteLine("Make your choice: ");
+                
                 String choice = Console.ReadLine();
 
                 switch (choice) 
@@ -44,10 +45,7 @@ namespace FarmInlämning
             }
         }
 
-        public void CropManagerMenu()
-        {
-            
-        }
+       
 
         public void AnimalManagerMenu()
         {
