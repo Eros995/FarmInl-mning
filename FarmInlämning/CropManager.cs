@@ -107,10 +107,12 @@ namespace FarmInlämning
                 }
             }
 
+            int maxId = crops.Max(crop =>crop.GetCropId());
+            maxId++;
+
             try
             {
-                int maxId = crops.Max(crop => crop.GetCropId());
-                Crop newCrop = new Crop(name, maxId++, cropType, quantity);
+                Crop newCrop = new Crop(name, maxId, cropType, quantity);
                 crops.Add(newCrop);
                 Console.WriteLine("New crop added successfully!");
             }
