@@ -28,14 +28,5 @@
             string description = "Name: " + Name + "Id: "+ Id + "Type: " + Species + "Amount: " + AcceptableCropTypes;
             Console.WriteLine(description);
         }
-
-
-       
-
-
-        
-
-        
-
     }
 }
