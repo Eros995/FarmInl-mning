@@ -82,7 +82,8 @@ namespace FarmInlämning
         }
 
         private void AddCrop()
-        {
+        
+            System.Console.WriteLine("hello");
 
         }
 
