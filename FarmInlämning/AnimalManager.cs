@@ -101,12 +101,12 @@ namespace FarmInlämning
         {
             if (animals.Count == 0)
             {
-                Console.Writeline("No Animals Available ");
-                Console.WriteLine("Animal name: " animal.AnimalName)
+                Console.WriteLine("No Animals Available ");
+                Console.WriteLine("Animal name: ");
             }
             else
             {
-                foreach(Animal animal in animals)
+                foreach(Animal animal in animals);
             }
 
         }//a
