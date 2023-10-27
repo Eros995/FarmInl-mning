@@ -9,7 +9,13 @@
         List<Animal> animals = new List<Animal>();
         public AnimalManager()
         {
-            animals.Add(new Animal("Carl", 123, "Dog", "Dog food"));
+            animals.Add(new Animal("Carl", 123, "Goat", "Hay"));
+            animals.Add(new Animal("Megan", 124, "Horse", "Carrot"));
+            animals.Add(new Animal("Bob", 125, "Cow", "Wheat"));
+            animals.Add(new Animal("Jake", 127, "Cow", "Wheat"));
+            animals.Add(new Animal("John", 128, "Chicken", "Seeds"));
+            animals.Add(new Animal("Trump", 129, "Pig", "Apple"));
+           
 
 
         }
@@ -26,6 +32,7 @@
                 Console.WriteLine("2. Add animal");
                 Console.WriteLine("3. Remove animal");
                 Console.WriteLine("4. Feed animal");
+                Console.WriteLine("5. Quit");
                 string input = Console.ReadLine();
 
                 switch (input)
@@ -58,6 +65,29 @@
 
         }
 
+
+        private void ViewAnimal()
+        {
+            if (animals.Count == 0)
+            {
+                Console.WriteLine("No crops available.");
+            }
+            else
+            {
+                int index = 1;
+                foreach (Animal animal in animals)
+                {
+                    Console.WriteLine("Animal " + index + ":");
+                    Console.WriteLine("Name: " + animal.AnimalsName);
+                    Console.WriteLine("Animal Id: " + animal.GetAnimalId());
+                    Console.WriteLine("Species: " + animal.GetSpecies());
+                    Console.WriteLine("Croptype: " + animal.GetAcceptableCropType());
+                    Console.WriteLine("");
+                    index++;
+                }
+            }
+        }
+
         private void AddAnimal()
         {
             Console.WriteLine("What is the name?");
@@ -81,7 +111,33 @@
 
         private void RemoveAnimal()
         {
+            Console.WriteLine("What animal do you want to remove? ");
+            Console.WriteLine("Type in the animal Id");
 
+            if (!int.TryParse(Console.ReadLine(), out int animalIdToRemove))
+            {
+                Console.WriteLine("invalid ID input ");
+                return;
+            }
+
+            int indexToRemove = -1;
+            for (int i = 0; i < animals.Count; i++)
+            {
+                if (animals[i].GetAnimalId() == animalIdToRemove)
+                {
+                    indexToRemove = i;
+                    break;
+                }
+            }
+            if (animalIdToRemove != -1)
+            {
+                animals.RemoveAt(indexToRemove);
+                Console.WriteLine("Animal with ID: " + animalIdToRemove + ", successfully removed!");
+            }
+            else
+            {
+                Console.WriteLine("Animal with ID: " + animalIdToRemove + " was not found!");
+            }
 
         }
 
@@ -89,20 +145,10 @@
         {
 
         }
-        private void ViewAnimal()
-        {
-            if (animals.Count == 0)
-            {
-                Console.WriteLine("No Animals Available ");
-                Console.WriteLine("Animal name: ");
-            }
-            else
-            {
-                foreach (Animal animal in animals) ;
-            }
+        
 
         }
 
 
-    }
+    
 }
