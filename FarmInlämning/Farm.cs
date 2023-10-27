@@ -8,9 +8,12 @@ namespace FarmInlämning
 {
     public class Farm
     {
+        public AnimalManager animalmanager;
         public CropManager cropmanager;
-        public Farm(CropManager cropmanager)
+        public Farm(CropManager cropmanager, AnimalManager animalmanager)
+
         {
+            this.animalmanager = animalmanager;
             this.cropmanager = cropmanager;
         }
 
@@ -30,7 +33,7 @@ namespace FarmInlämning
                 switch (choice) 
                 {
                     case "1":
-                        AnimalManagerMenu();
+                        animalmanager.AnimalManagerMenu();
                         break;
 
                     case "2":
@@ -50,11 +53,6 @@ namespace FarmInlämning
         }
 
        
-
-        public void AnimalManagerMenu()
-        {
-            
-        }
     }
 }   
 

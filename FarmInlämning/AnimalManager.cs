@@ -1,6 +1,6 @@
 ﻿namespace FarmInlämning
 {
-    internal class AnimalManager
+    public class AnimalManager
     { 
        
 
@@ -16,30 +16,40 @@
 
         public void AnimalManagerMenu()
         {
-            Console.WriteLine("What would you like to do?");
-            Console.WriteLine("1. View animal");
-            Console.WriteLine("2. Add animal");
-            Console.WriteLine("3. Remove animal");
-            Console.WriteLine("4. Feed animal");
-            string input = Console.ReadLine();
-
-            switch (input)
+            bool animalrunning = true;
+            while (animalrunning)
             {
-                case "1":
-                    ViewAnimal();
-                    break;
 
-                case "2":
-                    AddAnimal();
-                    break;
+            
+                Console.WriteLine("What would you like to do?");
+                Console.WriteLine("1. View animal");
+                Console.WriteLine("2. Add animal");
+                Console.WriteLine("3. Remove animal");
+                Console.WriteLine("4. Feed animal");
+                string input = Console.ReadLine();
 
-                case "3":
-                    RemoveAnimal();
-                    break;
+                switch (input)
+                {
+                    case "1":
+                        ViewAnimal();
+                        break;
 
-                case "4":
-                    FeedAnimal();
-                    break;
+                    case "2":
+                        AddAnimal();
+                        break;
+
+                    case "3":
+                        RemoveAnimal();
+                        break;
+
+                    case "4":
+                        FeedAnimal();
+                        break;
+                    
+                    case "5":
+                        animalrunning = false;
+                        break;
+                }
 
 
 

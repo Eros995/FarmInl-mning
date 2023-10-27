@@ -49,7 +49,7 @@ namespace FarmInlämning
                         RemoveCrop();
                         break;
                     case "4":
-
+                        
                     case "5":
                         croprunning = false;
                          break;

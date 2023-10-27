@@ -10,8 +10,9 @@ namespace FarmInlämning
     {
         static void Main(string[] args)
         {
-           CropManager cropManager = new CropManager();
-            Farm farm = new Farm(cropManager);
+            AnimalManager animalManager = new AnimalManager();
+            CropManager cropManager = new CropManager();
+            Farm farm = new Farm(cropManager, animalManager);
             farm.Mainmenu();
         }
         
