@@ -4,12 +4,10 @@
     {
 
         List<Crop> crops;
-        AnimalManager(List<Crop> crops)
+        public AnimalManager(List<Crop> crops)
         {
             this.crops = crops;
-            
         }
-
 
         List<Animal> animals = new List<Animal>();
         public AnimalManager()
