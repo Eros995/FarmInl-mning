@@ -6,18 +6,25 @@
         List<Crop> crops;
         AnimalManager(List<Crop> crops)
         {
-            this.crops = crops;
+            this.crops = crops ?? new List<Crop>();
         }
-
+        
         List<Animal> animals = new List<Animal>();
         public AnimalManager()
         {
+            crops = new List<Crop>();
             animals.Add(new Animal("Carl", 123, "Goat", "Hay"));
             animals.Add(new Animal("Megan", 124, "Horse", "Carrot"));
             animals.Add(new Animal("Bob", 125, "Cow", "Wheat"));
             animals.Add(new Animal("Jake", 127, "Cow", "Wheat"));
             animals.Add(new Animal("John", 128, "Chicken", "Seeds"));
             animals.Add(new Animal("Trump", 129, "Pig", "Apple"));
+            
+            crops.Add(new Crop("Seeds", 1000, "Plant", 500));
+            crops.Add(new Crop("Carrot", 1001, "Vegetable",200));
+            crops.Add(new Crop("Wheat", 1002, "Plant", 150));
+            crops.Add(new Crop("Hay", 1003, "Plant", 250));
+            crops.Add(new Crop("Apple", 1004, "Fruit", 450));
         }
 
 
@@ -145,41 +152,66 @@
         private void FeedAnimal()
         {
             Console.WriteLine("What animal do you want to feed?");
-            Console.WriteLine("Please type in the species:");
-            string input = Console.ReadLine();
+            Console.WriteLine("Please select an animal by entering its ID:");
 
-            /*if (input != null)
-             {
-                 int maxFeed = 20;
-
-             }*/
-
-            try
+            foreach (Animal animal in animals)
             {
-                int animalId = GetInput("Enter the ID of the animal you want to feed: ");
-                Animal animal = FindAnimalById(animalId);
+                Console.WriteLine($"Animal ID: {animal.GetAnimalId()}, Name: {animal.AnimalsName}");
+            }
 
-                int cropId = GetInput("Enter the ID of the crop to use for feeding: ");
-                Crop crop = FindCropById(crops, cropId);
+            int animalId = GetInput("Enter the ID of the animal you want to feed: ");
+            Animal selectedAnimal = FindAnimalById(animalId);
 
+            if (selectedAnimal == null)
+            {
+                Console.WriteLine("Animal not found.");
+                return;
+            }
+
+            Console.WriteLine($"Available crops for feeding {selectedAnimal.GetSpecies()}:");
+
+            List<Crop> availableCrops = new List<Crop>();
+            foreach (Crop crop in crops)
+            {
+                if (selectedAnimal.GetAcceptableCropType().Equals(crop.CropType, StringComparison.OrdinalIgnoreCase))
+                {
+                    availableCrops.Add(crop);
+                    Console.WriteLine($"Crop ID: {crop.GetCropId()}, Name: {crop.CropsName}");
+                }
+            }
+
+            if (availableCrops.Count == 0)
+            {
+                Console.WriteLine("No suitable crops available for feeding this animal.");
+                return;
+            }
+
+            int cropId = GetInput("Enter the ID of the crop to use for feeding: ");
+            Crop selectedCrop = availableCrops.FirstOrDefault(c => c.GetCropId() == cropId);
+
+            if (selectedCrop != null)
+            {
                 int quantity = GetInput("Enter the quantity: ");
 
-                if (quantity <= crop.GetCropQuantity())
+                if (quantity <= selectedCrop.GetCropQuantity())
                 {
                     // Implement the feeding logic here
-                    crop.SetCropQuantity(crop.GetCropQuantity() - quantity);
-                    Console.WriteLine($"{animal.AnimalsName} was fed {quantity} units of {crop.CropsName}.");
+                    selectedCrop.SetCropQuantity(selectedCrop.GetCropQuantity() - quantity);
+                    Console.WriteLine($"{selectedAnimal.AnimalsName} was fed {quantity} units of {selectedCrop.CropsName}.");
                 }
                 else
                 {
                     Console.WriteLine("Not enough of the selected crop to feed the animal.");
                 }
             }
-            catch (Exception ex)
+            else
             {
-                Console.WriteLine("Error: " + ex.Message);
+                Console.WriteLine("Invalid crop selection. Make sure the crop matches the animal's acceptable type.");
             }
         }
+
+
+
 
         private int GetInput(string prompt)
         {
