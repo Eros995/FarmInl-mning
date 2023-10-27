@@ -47,6 +47,14 @@
             get { return Name; }
             set { Name = value; }
         }
+        private void DisplayAllAnimals()
+        {
+            Console.WriteLine("Choose an animal to feed:");
+            foreach (Animal animal in animals)
+            {
+                Console.WriteLine(animal.GetAnimalId() + ". " + animal.AnimalsName);
+            }
+        }
 
     }
 }
