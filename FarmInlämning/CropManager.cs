@@ -15,11 +15,11 @@ namespace FarmInlämning
         List<Crop> crops = new List<Crop>();
         public CropManager()
         {
-            crops.Add(new Crop("egg", 12,  "food", 5));
-            crops.Add(new Crop("Vattenmelon", 1001, "Frukt", 20));
-            crops.Add(new Crop("Jordgubbe", 1002, "Bär", 15));
-            crops.Add(new Crop("Äpple", 1003, "Frukt", 25));
-            crops.Add(new Crop("Morot", 1007, "Grönsak", 45));
+            crops.Add(new Crop("Seeds", 1000,  "Plant", 500));
+            crops.Add(new Crop("Carrot", 1001, "Vegetable", 200));
+            crops.Add(new Crop("Wheat", 1002, "Plant", 150));
+            crops.Add(new Crop("Hay", 1003, "Plant", 250));
+            crops.Add(new Crop("Apple", 1004, "Fruit", 450));
             
 
         }
