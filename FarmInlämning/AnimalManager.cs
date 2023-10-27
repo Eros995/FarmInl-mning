@@ -1,11 +1,16 @@
 ﻿namespace FarmInlämning
 {
     public class AnimalManager
-    { 
-       
+    {
+
+        List<Crop> crops;
+        AnimalManager(List<Crop> crops)
+        {
+            this.crops = crops;
+            
+        }
 
 
-    
         List<Animal> animals = new List<Animal>();
         public AnimalManager()
         {
@@ -15,10 +20,11 @@
             animals.Add(new Animal("Jake", 127, "Cow", "Wheat"));
             animals.Add(new Animal("John", 128, "Chicken", "Seeds"));
             animals.Add(new Animal("Trump", 129, "Pig", "Apple"));
-           
+
 
 
         }
+
 
         public void AnimalManagerMenu()
         {
@@ -26,7 +32,7 @@
             while (animalrunning)
             {
 
-            
+
                 Console.WriteLine("What would you like to do?");
                 Console.WriteLine("1. View animal");
                 Console.WriteLine("2. Add animal");
@@ -52,7 +58,7 @@
                     case "4":
                         FeedAnimal();
                         break;
-                    
+
                     case "5":
                         animalrunning = false;
                         break;
@@ -143,12 +149,77 @@
 
         private void FeedAnimal()
         {
+            Console.WriteLine("What animal do you want to feed?");
+            Console.WriteLine("Please type in the species:");
+            string input = Console.ReadLine();
 
-        }
-        
+            /*if (input != null)
+             {
+                 int maxFeed = 20;
 
+             }*/
+
+            try
+            {
+                int animalId = GetInput("Enter the ID of the animal you want to feed: ");
+                Animal animal = FindAnimalById(animalId);
+
+                int cropId = GetInput("Enter the ID of the crop to use for feeding: ");
+                Crop crop = FindCropById(crops, cropId);
+
+                int quantity = GetInput("Enter the quantity: ");
+
+                if (quantity <= crop.GetCropQuantity())
+                {
+                    // Implement the feeding logic here
+                    crop.SetCropQuantity(crop.GetCropQuantity() - quantity);
+                    Console.WriteLine($"{animal.AnimalsName} was fed {quantity} units of {crop.CropsName}.");
+                }
+                else
+                {
+                    Console.WriteLine("Not enough of the selected crop to feed the animal.");
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("Error: " + ex.Message);
+            }
         }
+
+        private int GetInput(string prompt)
+        {
+            Console.Write(prompt);
+            if (!int.TryParse(Console.ReadLine(), out int value) || value <= 0)
+            {
+                throw new InvalidOperationException("Invalid input. Please enter a positive number.");
+            }
+            return value;
+        }
+
+        private Animal FindAnimalById(int id)
+        {
+            Animal animal = animals.FirstOrDefault(a => a.GetAnimalId() == id);
+            if (animal == null)
+            {
+                throw new InvalidOperationException("Animal with the specified ID was not found.");
+            }
+            return animal;
+        }
+
+        private Crop FindCropById(List <Crop> crops, int id)
+        {
+            Crop crop = crops.FirstOrDefault(c => c.GetCropId() == id);
+            if (crop == null)
+            {
+                throw new InvalidOperationException("Crop with the specified ID was not found.");
+            }
+            return crop;
+        }
+
+    }
+
+
+}
 
 
     
-}

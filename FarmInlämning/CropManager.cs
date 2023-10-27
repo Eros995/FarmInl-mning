@@ -154,7 +154,13 @@ namespace FarmInlämning
             }
         }
 
-      
+        private Crop FindCropById(List<Crop> crops, int id)
+        {
+            // Search for the crop with the specified ID in the crops list.
+            return crops.FirstOrDefault(crop => crop.GetCropId() == id);
+        }
+
+
 
     }
 }
