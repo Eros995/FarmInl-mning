@@ -4,7 +4,7 @@
     {
 
         List<Crop> crops;
-        public AnimalManager(List<Crop> crops)
+        AnimalManager(List<Crop> crops)
         {
             this.crops = crops;
         }
@@ -18,9 +18,6 @@
             animals.Add(new Animal("Jake", 127, "Cow", "Wheat"));
             animals.Add(new Animal("John", 128, "Chicken", "Seeds"));
             animals.Add(new Animal("Trump", 129, "Pig", "Apple"));
-
-
-
         }
 
 
