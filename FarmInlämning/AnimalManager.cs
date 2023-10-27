@@ -147,14 +147,15 @@
             Console.WriteLine("What animal do you want to feed?");
             Console.WriteLine("Please type in the species:");
             string input = Console.ReadLine();
+            
 
             /*if (input != null)
              {
                  int maxFeed = 20;
 
-             }*/
+             }
 
-            try
+            try*/
             {
                 int animalId = GetInput("Enter the ID of the animal you want to feed: ");
                 Animal animal = FindAnimalById(animalId);
