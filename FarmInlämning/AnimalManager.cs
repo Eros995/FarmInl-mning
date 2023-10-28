@@ -183,7 +183,8 @@
 
             foreach (Animal animal in animals)
             {
-                Console.WriteLine($"Animal ID: {animal.GetAnimalId()}, Name: {animal.AnimalsName}");
+                
+                Console.WriteLine($"Animal ID: {animal.GetAnimalId()}, Name: {animal.AnimalsName}, Species: {animal.GetSpecies()}, Acceptable CropType: {animal.GetAcceptableCropType()}");
             }
 
             int animalId = GetInput("Enter the ID of the animal you want to feed: ");
@@ -199,11 +200,8 @@
 
             foreach (Crop crop in crops)
             {
-                if (selectedAnimal.GetAcceptableCropType().Equals(crop.CropType, StringComparison.OrdinalIgnoreCase) &&
-                    crop.GetCropQuantity() > 0)
-                {
                     Console.WriteLine($"Crop ID: {crop.GetCropId()}, Name: {crop.CropsName}, Quantity: {crop.GetCropQuantity()}");
-                }
+                
             }
 
             int cropId = GetInput("Enter the ID of the crop to use for feeding: ");
