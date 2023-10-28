@@ -152,7 +152,7 @@
         public void FeedAnimal()
         {
             Console.WriteLine("Which animal do you want to feed?");
-            Console.WriteLine("Please select an animal by entering its ID:");
+            Console.WriteLine("Please type in animal ID:");
 
             foreach (Animal animal in animals)
             {
@@ -180,23 +180,12 @@
             }
 
             int cropId = GetInput("Enter the ID of the crop to use for feeding: ");
-            Crop selectedCrop = FindCropById(crops, cropId);
+            Crop selectedCrop = FindCropById(cropId);//
 
             if (selectedCrop != null && selectedCrop.GetCropQuantity() > 0)
             {
                 int quantity = GetInput("Enter the quantity: ");
                 selectedAnimal.Feed(selectedCrop);
-
-                if (quantity <= selectedCrop.GetCropQuantity())
-                {
-                    // Implement the feeding logic here
-                    selectedCrop.SetCropQuantity(selectedCrop.GetCropQuantity() - quantity);
-                    Console.WriteLine($"{selectedAnimal.AnimalsName} was fed {quantity} units of {selectedCrop.CropsName}.");
-                }
-                else
-                {
-                    Console.WriteLine("Not enough of the selected crop to feed the animal.");
-                }
             }
             else
             {
@@ -209,6 +198,20 @@
 
         private int GetInput(string prompt)
         {
+            int vlaue;
+
+            while(true)
+            {
+                Console.WriteLine(prompt);
+                if(int.TryParse(Console.ReadLine(), out vlaue) && vlaue > 0)
+                {
+                    return vlaue;
+                }
+                else
+                {
+                    Console.WriteLine("Invalid input. Please enter positive number.");
+                }
+            }
             Console.Write(prompt);
             if (!int.TryParse(Console.ReadLine(), out int value) || value <= 0)
             {
@@ -219,22 +222,28 @@
 
         private Animal FindAnimalById(int id)
         {
-            Animal animal = animals.FirstOrDefault(a => a.GetAnimalId() == id);
+            return animals.FirstOrDefault(animal => animal.GetAnimalId() == id);
+
+            
+            /*Animal animal = animals.FirstOrDefault(a => a.GetAnimalId() == id);
             if (animal == null)
             {
                 Console.WriteLine("Animal with the specified ID was not found.");
             }
-            return animal;
+            return animal;*/
         }
 
-        private Crop FindCropById(List <Crop> crops, int id)
+        private Crop FindCropById(int id)
         {
-            Crop crop = crops.FirstOrDefault(c => c.GetCropId() == id);
+
+            return crops.FirstOrDefault(crop => crop.GetCropId() == id);
+
+            /*Crop crop = crops.FirstOrDefault(c => c.GetCropId() == id);
             if (crop == null)
             {
                 Console.WriteLine("Crop with the specified ID was not found.");
             }
-            return crop;
+            return crop;*/
         }
 
     }
