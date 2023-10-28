@@ -185,6 +185,7 @@
             if (selectedCrop != null && selectedCrop.GetCropQuantity() > 0)
             {
                 int quantity = GetInput("Enter the quantity: ");
+                selectedAnimal.Feed(selectedCrop);
 
                 if (quantity <= selectedCrop.GetCropQuantity())
                 {
