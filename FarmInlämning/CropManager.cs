@@ -143,14 +143,22 @@ namespace FarmInlämning
                     break;
                 }
             }
-            if(cropIdToRemove != -1)
+            try
             {
-                crops.RemoveAt(indexToRemove);
-                Console.WriteLine("Crop with ID: " + cropIdToRemove + ", successfully removed!");
+                if (cropIdToRemove != -1)
+                {
+                    crops.RemoveAt(indexToRemove);
+                    Console.WriteLine("Crop with ID: " + cropIdToRemove + ", successfully removed!");
+                }
+
+                else
+                {
+                    Console.WriteLine("Crop with ID: " + cropIdToRemove + " was not found!");
+                }
             }
-            else
+            catch
             {
-                Console.WriteLine("Crop with ID: " + cropIdToRemove + " was not found!");
+                Console.WriteLine("This ID doesn´t exist. Try again. " );
             }
         }
 
