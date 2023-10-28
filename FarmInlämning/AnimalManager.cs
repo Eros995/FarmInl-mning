@@ -149,9 +149,9 @@
 
         }
 
-        private void FeedAnimal()
+        public void FeedAnimal()
         {
-            Console.WriteLine("What animal do you want to feed?");
+            Console.WriteLine("Which animal do you want to feed?");
             Console.WriteLine("Please select an animal by entering its ID:");
 
             foreach (Animal animal in animals)
@@ -170,26 +170,19 @@
 
             Console.WriteLine($"Available crops for feeding {selectedAnimal.GetSpecies()}:");
 
-            List<Crop> availableCrops = new List<Crop>();
             foreach (Crop crop in crops)
             {
-                if (selectedAnimal.GetAcceptableCropType().Equals(crop.CropType, StringComparison.OrdinalIgnoreCase))
+                if (selectedAnimal.GetAcceptableCropType().Equals(crop.CropType, StringComparison.OrdinalIgnoreCase) &&
+                    crop.GetCropQuantity() > 0)
                 {
-                    availableCrops.Add(crop);
-                    Console.WriteLine($"Crop ID: {crop.GetCropId()}, Name: {crop.CropsName}");
+                    Console.WriteLine($"Crop ID: {crop.GetCropId()}, Name: {crop.CropsName}, Quantity: {crop.GetCropQuantity()}");
                 }
             }
 
-            if (availableCrops.Count == 0)
-            {
-                Console.WriteLine("No suitable crops available for feeding this animal.");
-                return;
-            }
-
             int cropId = GetInput("Enter the ID of the crop to use for feeding: ");
-            Crop selectedCrop = availableCrops.FirstOrDefault(c => c.GetCropId() == cropId);
+            Crop selectedCrop = FindCropById(crops, cropId);
 
-            if (selectedCrop != null)
+            if (selectedCrop != null && selectedCrop.GetCropQuantity() > 0)
             {
                 int quantity = GetInput("Enter the quantity: ");
 
@@ -206,7 +199,7 @@
             }
             else
             {
-                Console.WriteLine("Invalid crop selection. Make sure the crop matches the animal's acceptable type.");
+                Console.WriteLine("Invalid crop selection or insufficient quantity. Make sure the crop matches the animal's acceptable type and has enough quantity.");
             }
         }
 
@@ -218,7 +211,7 @@
             Console.Write(prompt);
             if (!int.TryParse(Console.ReadLine(), out int value) || value <= 0)
             {
-                throw new InvalidOperationException("Invalid input. Please enter a positive number.");
+                Console.WriteLine("Invalid input. Please enter a positive number.");
             }
             return value;
         }
@@ -228,7 +221,7 @@
             Animal animal = animals.FirstOrDefault(a => a.GetAnimalId() == id);
             if (animal == null)
             {
-                throw new InvalidOperationException("Animal with the specified ID was not found.");
+                Console.WriteLine("Animal with the specified ID was not found.");
             }
             return animal;
         }
@@ -238,7 +231,7 @@
             Crop crop = crops.FirstOrDefault(c => c.GetCropId() == id);
             if (crop == null)
             {
-                throw new InvalidOperationException("Crop with the specified ID was not found.");
+                Console.WriteLine("Crop with the specified ID was not found.");
             }
             return crop;
         }

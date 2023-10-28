@@ -20,6 +20,24 @@
 
         public void Feed(Crop crop)
         {
+            if (crop.GetCropType().Equals(AcceptableCropTypes, StringComparison.OrdinalIgnoreCase))
+            {
+                int quantityToFeed = 1;
+
+                if (crop.GetCropQuantity() >= quantityToFeed)
+                {
+                    crop.SetCropQuantity(crop.GetCropQuantity() - quantityToFeed);
+                    Console.WriteLine($"The {AnimalsName}  is happy");
+                }
+                else
+                {
+                    Console.WriteLine($"Not enough {crop.CropsName} available to feed {AnimalsName}.");
+                }
+            }
+            else
+            {
+                Console.WriteLine($"{AnimalsName} cannot eat {crop.CropsName}.");
+            }
 
         }
 
