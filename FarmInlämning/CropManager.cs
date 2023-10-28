@@ -15,6 +15,7 @@ namespace FarmInlämning
         List<Crop> crops = new List<Crop>();
         public CropManager()
         {
+            List<Crop> crops = new List<Crop>();
             crops.Add(new Crop("Seeds", 1000,  "Plant", 500));
             crops.Add(new Crop("Carrot", 1001, "Vegetable", 200));
             crops.Add(new Crop("Wheat", 1002, "Plant", 150));
@@ -71,7 +72,7 @@ namespace FarmInlämning
                 foreach (Crop crop in crops)
                 {
                     Console.WriteLine("Crop " + index + ":");
-                    Console.WriteLine("Name: " + crop.CropsName);
+                    Console.WriteLine("Name: " + crop.cropsName);
                     Console.WriteLine("Crop type: " + crop.GetCropType());
                     Console.WriteLine("Quantity: " + crop.GetCropQuantity());
                     Console.WriteLine("CropId: " + crop.GetCropId());

@@ -20,6 +20,9 @@
 
         public void Feed(Crop crop)
         {
+            Console.WriteLine($"Acceptable Crop Type for {AnimalsName}: {AcceptableCropTypes}");
+            Console.WriteLine($"Actual Crop Type: {crop.GetCropType()}");
+
             if (crop.GetCropType().Equals(AcceptableCropTypes, StringComparison.OrdinalIgnoreCase))
             {
                 int quantityToFeed = 1;
@@ -27,19 +30,19 @@
                 if (crop.GetCropQuantity() >= quantityToFeed)
                 {
                     crop.SetCropQuantity(crop.GetCropQuantity() - quantityToFeed);
-                    Console.WriteLine($"The {AnimalsName}  is happy");
+                    Console.WriteLine($"The {AnimalsName} is happy");
                 }
                 else
                 {
-                    Console.WriteLine($"Not enough {crop.CropsName} available to feed {AnimalsName}.");
+                    Console.WriteLine($"Not enough {crop.cropsName} available to feed {AnimalsName}.");
                 }
             }
             else
             {
-                Console.WriteLine($"{AnimalsName} cannot eat {crop.CropsName}.");
+                Console.WriteLine($"{AnimalsName} cannot eat {crop.cropsName}.");
             }
-
         }
+
 
 
         public override void GetDescription()

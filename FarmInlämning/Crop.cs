@@ -30,7 +30,7 @@ namespace FarmInlämning
             Console.WriteLine(description);
         }
 
-        public string CropsName
+        public string cropsName
         {
             get { return Name; }
             set { Name = value; }

@@ -183,7 +183,6 @@
 
             foreach (Animal animal in animals)
             {
-                
                 Console.WriteLine($"Animal ID: {animal.GetAnimalId()}, Name: {animal.AnimalsName}, Species: {animal.GetSpecies()}, Acceptable CropType: {animal.GetAcceptableCropType()}");
             }
 
@@ -196,18 +195,23 @@
                 return;
             }
 
-            Console.WriteLine($"Available crops for feeding {selectedAnimal.GetSpecies()}:");
+            Console.WriteLine($"Available crops for feeding {selectedAnimal.GetSpecies()} ({selectedAnimal.GetAcceptableCropType()}):");
 
             foreach (Crop crop in crops)
             {
-                    Console.WriteLine($"Crop ID: {crop.GetCropId()}, Name: {crop.CropsName}, Quantity: {crop.GetCropQuantity()}");
                 
+                {
+                    Console.WriteLine($"Crop ID: {crop.GetCropId()}, Name: {crop.cropsName}, Quantity: {crop.GetCropQuantity()}");
+                }
             }
 
             int cropId = GetInput("Enter the ID of the crop to use for feeding: ");
-            Crop selectedCrop = FindCropById(cropId);//
+            Crop selectedCrop = FindCropById(cropId);
 
-            if (selectedCrop != null && selectedCrop.GetCropQuantity() > 0)
+            Console.WriteLine($"Selected Crop Type: {selectedCrop.GetCropType()}, Animal Acceptable Crop Type: {selectedAnimal.GetAcceptableCropType()}");
+
+            if (selectedCrop != null && selectedCrop.GetCropQuantity() > 0 &&
+                selectedCrop.GetCropType().Equals(selectedAnimal.GetAcceptableCropType(), StringComparison.OrdinalIgnoreCase))
             {
                 int quantity = GetInput("Enter the quantity: ");
                 selectedAnimal.Feed(selectedCrop);
@@ -217,6 +221,7 @@
                 Console.WriteLine("Invalid crop selection or insufficient quantity. Make sure the crop matches the animal's acceptable type and has enough quantity.");
             }
         }
+
 
 
 
