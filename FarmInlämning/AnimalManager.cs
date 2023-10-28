@@ -96,24 +96,51 @@
             }
         }
 
+
+        private bool AnimalIdExists(int id)
+        {
+            return animals.Any(animal => animal.GetAnimalId() == id);
+        }
+
         private void AddAnimal()
         {
             Console.WriteLine("What is the name?");
             string name = Console.ReadLine();
 
-            Console.WriteLine("What is the Id?");
-            int id = Convert.ToInt32(Console.ReadLine());
+            int id = 0;
+            bool validId = false;
 
+            while (!validId)
+            {
+                Console.WriteLine("What is the Id?");
+                if (int.TryParse(Console.ReadLine(), out id)) // Get the ID from the user's input
+                {
+                    if (AnimalIdExists(id))
+                    {
+                        Console.WriteLine("An animal with the same ID already exists. Please choose a different ID.");
+                    }
+                    else
+                    {
+                        validId = true; // The ID is unique.
+                    }
+                }
+                else
+                {
+                    Console.WriteLine("Invalid ID. Please enter a valid integer ID.");
+                }
+            }
+
+            // Collect the remaining animal details outside of the loop.
             Console.WriteLine("What is the species?");
             string species = Console.ReadLine();
 
             Console.WriteLine("What is the acceptable crop type?");
             string acceptableCropType = Console.ReadLine();
 
-            animals.Add(new Animal(name, id, species, acceptableCropType));
+            // Create a new Animal using the collected details.
+            Animal newAnimal = new Animal(name, id, species, acceptableCropType);
+            animals.Add(newAnimal);
             Console.WriteLine(name + " was added!");
-
-
         }
 
 
