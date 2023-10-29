@@ -64,7 +64,7 @@ namespace FarmInlämning
         {
             if (crops.Count == 0)
             {
-                Console.WriteLine("No crops available.");
+                Console.WriteLine("No crops available!");
             }
             else
             {
