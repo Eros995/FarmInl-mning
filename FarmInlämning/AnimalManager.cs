@@ -88,13 +88,7 @@ namespace FarmInlämning
                 int index = 1;
                 foreach (Animal animal in animals)
                 {
-                    Console.WriteLine("Animal " + index + ":");
-                    Console.WriteLine("Name: " + animal.AnimalsName);
-                    Console.WriteLine("Animal Id: " + animal.GetAnimalId());
-                    Console.WriteLine("Species: " + animal.GetSpecies());
-                    Console.WriteLine("Croptype: " + animal.GetAcceptableCropType());
-                    Console.WriteLine("");
-                    index++;
+                    Console.WriteLine($"Animal: {index}, Name: {animal.AnimalsName}, Animal ID: {animal.GetAnimalId()}, Species: {animal.GetSpecies()}, CropType: {animal.GetAcceptableCropType()}");
                 }
             }
         }
