@@ -71,13 +71,7 @@ namespace FarmInlämning
                 int index = 1;
                 foreach (Crop crop in crops)
                 {
-                    Console.WriteLine("Crop " + index + ":");
-                    Console.WriteLine("Name: " + crop.cropsName);
-                    Console.WriteLine("Crop type: " + crop.GetCropType());
-                    Console.WriteLine("Quantity: " + crop.GetCropQuantity());
-                    Console.WriteLine("CropId: " + crop.GetCropId());
-                    Console.WriteLine("");
-                    index++;
+                    Console.WriteLine($"Crop: {index}, Name: {crop.cropsName}, Crop Type: {crop.GetCropType()} Qauntity: {crop.GetCropQuantity()}, CropID: {crop.GetCropId()}");
                 }
             }
 
