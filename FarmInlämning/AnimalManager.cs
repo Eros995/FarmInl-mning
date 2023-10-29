@@ -196,6 +196,7 @@ namespace FarmInlämning
             }
 
             GetAnimalIdInput();
+            ViewCrop();
         }
 
         private int GetAnimalIdInput()
@@ -203,7 +204,7 @@ namespace FarmInlämning
             int animalId;
             while (true)
             {
-                Console.WriteLine("Please enter the ID of the animal you would like to feed.");
+                Console.WriteLine("Please enter the id of the animal you would like to feed.");
                 string input = Console.ReadLine();
 
                 if (int.TryParse(input, out animalId))
@@ -224,10 +225,32 @@ namespace FarmInlämning
                     Console.WriteLine("Invalid input. Please enter a valid integer ID.");      
                 }
             }
-             
 
-        }   
-    } 
+
+        }
+        private void ViewCrop()
+        {
+            if (crops.Count == 0)
+            {
+                Console.WriteLine("No crops available.");
+            }
+            else
+            {
+                int index = 1;
+                foreach (Crop crop in crops)
+                {
+                    Console.WriteLine("Crop " + index + ":");
+                    Console.WriteLine("Name: " + crop.cropsName);
+                    Console.WriteLine("Crop type: " + crop.GetCropType());
+                    Console.WriteLine("Quantity: " + crop.GetCropQuantity());
+                    Console.WriteLine("CropId: " + crop.GetCropId());
+                    Console.WriteLine("");
+                    index++;
+                }
+            } 
+
+        }
+    }
 }
 
 
