@@ -15,7 +15,7 @@ namespace FarmInlämning
         List<Crop> crops = new List<Crop>();
         public CropManager()
         {
-            List<Crop> crops = new List<Crop>();
+            
             crops.Add(new Crop("Seeds", 1000,  "Plant", 500));
             crops.Add(new Crop("Carrot", 1001, "Vegetable", 200));
             crops.Add(new Crop("Wheat", 1002, "Plant", 150));
