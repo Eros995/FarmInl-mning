@@ -1,4 +1,5 @@
-﻿using System.Reflection.Metadata.Ecma335;
+﻿using System.ComponentModel.Design;
+using System.Reflection.Metadata.Ecma335;
 using System.Threading.Channels;
 
 namespace FarmInlämning
@@ -89,6 +90,7 @@ namespace FarmInlämning
                 foreach (Animal animal in animals)
                 {
                     Console.WriteLine($"Animal: {index}, Name: {animal.AnimalsName}, Animal ID: {animal.GetAnimalId()}, Species: {animal.GetSpecies()}, CropType: {animal.GetAcceptableCropType()}");
+                    index++;
                 }
             }
         }
@@ -110,7 +112,7 @@ namespace FarmInlämning
             while (!validId)
             {
                 Console.WriteLine("What is the Id?");
-                if (int.TryParse(Console.ReadLine(), out id)) // Get the ID from the user's input
+                if (int.TryParse(Console.ReadLine(), out id)) 
                 {
                     if (AnimalIdExists(id))
                     {
@@ -118,7 +120,7 @@ namespace FarmInlämning
                     }
                     else
                     {
-                        validId = true; // The ID is unique.
+                        validId = true; 
                     }
                 }
                 else
@@ -127,14 +129,12 @@ namespace FarmInlämning
                 }
             }
 
-            // Collect the remaining animal details outside of the loop.
             Console.WriteLine("What is the species?");
             string species = Console.ReadLine();
 
             Console.WriteLine("What is the acceptable crop type?");
             string acceptableCropType = Console.ReadLine();
 
-            // Create a new Animal using the collected details.
             Animal newAnimal = new Animal(name, id, species, acceptableCropType);
             animals.Add(newAnimal);
             Console.WriteLine(name + " was added!");
@@ -188,28 +188,57 @@ namespace FarmInlämning
         {
             
             Console.WriteLine("What animal would you like to feed?");
-            int index = 1;
-            foreach (Animal animal in animals)
-            {
-                Console.WriteLine($"Animal: {index}, Name: {animal.AnimalsName}, Animal ID: {animal.GetAnimalId()}, Species: {animal.GetSpecies()}, CropType: {animal.GetAcceptableCropType()}");
-                index++;
-            }
+            ViewAnimal();
 
-            GetAnimalIdInput();
+
+
             ViewCrop();
             int animalId = GetAnimalIdInput();
             if ( animalId > 0) 
             {
                 Animal selectedAnimal = FindAnimalById(animalId);
                 if ( selectedAnimal != null ) 
-                { 
-                 ViewCrop();
-                }
+                {
+                    Console.WriteLine($"Avaliable crops for feeding: {selectedAnimal.GetSpecies()}");
+                    bool avaliableCrops = false;
+                    foreach (Crop crop in crops) 
+                    {
+                        if (string.Equals(crop.GetCropType(), selectedAnimal.GetAcceptableCropType(), StringComparison.OrdinalIgnoreCase) && crop.GetCropQuantity() > 0)
+                            Console.WriteLine($"Crop ID: {crop.GetCropId()}, Name: {crop.cropsName}, Quantity: {crop.GetCropQuantity()}");
+                         avaliableCrops = true;
+                    }
+                    if (!avaliableCrops) 
+                    {
+                        Console.WriteLine("There are no avaliable crops for feeding.");
+                    }
+                    else 
+                    {
+                        int cropId = GetCropIdInput();
+                    }
+                }   
                 else 
                 {
                     Console.WriteLine("There is no animal with this ID.");
                 }
             }
+        }
+
+        private int GetCropIdInput()
+        {
+            int cropId;
+            while (true)
+            {
+                Console.WriteLine("Please enter the ID of the crop you would like to use for feeding.");
+                string input = Console.ReadLine();
+                if(int.TryParse(input, out cropId)) 
+                { 
+                 return cropId;
+                }
+                else 
+                {
+                    Console.WriteLine("Invalid input. Please input a integer ID.");
+                }
+            }   
         }
 
         private int GetAnimalIdInput()
