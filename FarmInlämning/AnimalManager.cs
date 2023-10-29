@@ -1,4 +1,5 @@
-﻿using System.Threading.Channels;
+﻿using System.Reflection.Metadata.Ecma335;
+using System.Threading.Channels;
 
 namespace FarmInlämning
 {
@@ -193,15 +194,29 @@ namespace FarmInlämning
                 index++;
             }
 
-            Console.WriteLine("Please enter the id of the animal you would like to feed.");
             GetAnimalIdInput();
         }
 
-        private void GetAnimalIdInput()
+        private int GetAnimalIdInput()
         {
-           
-        }
-    }
+            int animalId;
+            while (true)
+            {
+                Console.WriteLine("Please enter the id of the animal you would like to feed.");
+                string input = Console.ReadLine();
+
+                if (int.TryParse(input, out animalId) && animalId > 0) 
+                {
+                    return animalId;
+                }
+
+                else 
+                {
+                    Console.WriteLine("Invalid input");      
+                }
+            } 
+        }   
+    } 
 }
 
 
