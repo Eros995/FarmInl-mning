@@ -8,16 +8,11 @@ namespace FarmInlämning
     {
 
         List<Crop> crops;
-        AnimalManager(List<Crop> crops)
-        {
-            this.crops = crops ?? new List<Crop>();
-        }
-
         List<Animal> animals = new List<Animal>();
         public AnimalManager()
         {
             crops = new List<Crop>();
-            animals.Add(new Animal("Carl", 123, "Goat", "Hay"));
+            animals.Add(new Animal("Carl" , 123, "Goat", "Hay"));
             animals.Add(new Animal("Megan", 124, "Horse", "Carrot"));
             animals.Add(new Animal("Bob", 125, "Cow", "Wheat"));
             animals.Add(new Animal("Jake", 127, "Cow", "Wheat"));
@@ -25,10 +20,10 @@ namespace FarmInlämning
             animals.Add(new Animal("Trump", 129, "Pig", "Apple"));
 
             crops.Add(new Crop("Seeds", 1000, "Plant", 500));
-            crops.Add(new Crop("Carrot", 1001, "Vegetable", 200));
-            crops.Add(new Crop("Wheat", 1002, "Plant", 150));
-            crops.Add(new Crop("Hay", 1003, "Plant", 250));
-            crops.Add(new Crop("Apple", 1004, "Fruit", 450));
+            crops.Add(new Crop("Carrot" , 1001, "Vegetable", 200));
+            crops.Add(new Crop("Wheat" , 1002, "Plant", 150));
+            crops.Add(new Crop("Hay" , 1003, "Plant", 250));
+            crops.Add(new Crop("Apple" , 1004, "Fruit", 450));
         }
 
 
@@ -178,7 +173,7 @@ namespace FarmInlämning
 
             catch (Exception ex)
             {
-                Console.WriteLine("Write an ID that exist.");
+                Console.WriteLine("Write an ID that exists.");
 
             }
 

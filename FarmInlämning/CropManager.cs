@@ -102,12 +102,12 @@ namespace FarmInlämning
                 }
             }
 
-            int maxId = crops.Max(crop =>crop.GetCropId());
-            maxId++;
+            int cropId = crops.Max(crop =>crop.GetCropId());
+            cropId++;
 
             try
             {
-                Crop newCrop = new Crop(name, maxId, cropType, quantity);
+                Crop newCrop = new Crop(name, cropId, cropType, quantity);
                 crops.Add(newCrop);
                 Console.WriteLine("New crop added successfully!");
             }
@@ -157,10 +157,7 @@ namespace FarmInlämning
             }
         }
 
-        private Crop FindCropById(List<Crop> crops, int id)
-        { 
-            return crops.FirstOrDefault(crop => crop.GetCropId() == id);
-        }
+        
 
 
 
