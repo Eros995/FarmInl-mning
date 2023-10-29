@@ -180,12 +180,7 @@ namespace FarmInlämning
             int index = 1;
             foreach (Animal animal in animals)
             {
-                Console.WriteLine("Animal " + index + ":");
-                Console.WriteLine("Name: " + animal.AnimalsName);
-                Console.WriteLine("Animal Id: " + animal.GetAnimalId());
-                Console.WriteLine("Species: " + animal.GetSpecies());
-                Console.WriteLine("Croptype: " + animal.GetAcceptableCropType());
-                Console.WriteLine("");
+                Console.WriteLine($"Animal: {index}, Name: {animal.AnimalsName}, Animal ID: {animal.GetAnimalId()}, Species: {animal.GetSpecies()}, CropType: {animal.GetAcceptableCropType()}");
                 index++;
             }
 
@@ -233,12 +228,7 @@ namespace FarmInlämning
                 int index = 1;
                 foreach (Crop crop in crops)
                 {
-                    Console.WriteLine("Crop " + index + ":");
-                    Console.WriteLine("Name: " + crop.cropsName);
-                    Console.WriteLine("Crop type: " + crop.GetCropType());
-                    Console.WriteLine("Quantity: " + crop.GetCropQuantity());
-                    Console.WriteLine("CropId: " + crop.GetCropId());
-                    Console.WriteLine("");
+                    Console.WriteLine($"Crop: {index}, Name: {crop.cropsName}, Crop Type: {crop.GetCropType()} Qauntity: {crop.GetCropQuantity()}, CropID: {crop.GetCropId()}");
                     index++;
                 }
             } 
