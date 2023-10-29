@@ -203,20 +203,28 @@ namespace FarmInlämning
             int animalId;
             while (true)
             {
-                Console.WriteLine("Please enter the id of the animal you would like to feed.");
+                Console.WriteLine("Please enter the ID of the animal you would like to feed.");
                 string input = Console.ReadLine();
 
-                if (int.TryParse(input, out animalId) && animalId > 0) 
+                if (int.TryParse(input, out animalId))
                 {
-                    return animalId;
+                    if (AnimalIdExists(animalId))
+                    {
+                        return animalId;
+                    }
+
+                    else
+                    {
+                        Console.WriteLine("Invalid input. There is no animal with this ID.");
+                    }
                 }
 
                 else 
                 {
-                    Console.WriteLine("Invalid input");      
+                    Console.WriteLine("Invalid input. Please enter a valid integer ID.");      
                 }
             }
-            return animalId; 
+             
 
         }   
     } 
