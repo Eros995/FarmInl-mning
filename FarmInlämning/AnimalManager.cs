@@ -181,6 +181,7 @@ namespace FarmInlämning
 
         private void FeedAnimal()
         {
+            
             Console.WriteLine("What animal would you like to feed?");
             int index = 1;
             foreach (Animal animal in animals)
@@ -214,7 +215,9 @@ namespace FarmInlämning
                 {
                     Console.WriteLine("Invalid input");      
                 }
-            } 
+            }
+            return animalId; 
+
         }   
     } 
 }
