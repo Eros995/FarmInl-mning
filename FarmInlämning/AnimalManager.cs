@@ -188,17 +188,15 @@ namespace FarmInlämning
         {
             
             Console.WriteLine("What animal would you like to feed?");
-
             ViewAnimal();
-            Console.WriteLine("=",  6);
-            ViewCrop();
             int animalId = GetAnimalIdInput();
             if ( animalId > 0) 
             {
                 Animal selectedAnimal = FindAnimalById(animalId);
                 if ( selectedAnimal != null ) 
                 {
-                    Console.WriteLine($"Avaliable crops for feeding: {selectedAnimal.GetSpecies()}");
+                    ViewCrop();
+                    Console.WriteLine($"You chose: {selectedAnimal.AnimalsName}, And the crop it accepts is : {selectedAnimal.GetAcceptableCropType()}");
                     bool avaliableCrops = false;
                     foreach (Crop crop in crops) 
                     {
