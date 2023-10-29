@@ -188,10 +188,9 @@ namespace FarmInlämning
         {
             
             Console.WriteLine("What animal would you like to feed?");
+
             ViewAnimal();
-
-
-
+            Console.WriteLine("=",  6);
             ViewCrop();
             int animalId = GetAnimalIdInput();
             if ( animalId > 0) 
