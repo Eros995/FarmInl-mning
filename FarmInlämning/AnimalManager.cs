@@ -143,32 +143,43 @@ namespace FarmInlämning
 
         private void RemoveAnimal()
         {
-            Console.WriteLine("What animal do you want to remove? ");
-            Console.WriteLine("Type in the animal Id");
-
-            if (!int.TryParse(Console.ReadLine(), out int animalIdToRemove))
+            try
             {
-                Console.WriteLine("invalid ID input ");
-                return;
-            }
 
-            int indexToRemove = -1;
-            for (int i = 0; i < animals.Count; i++)
-            {
-                if (animals[i].GetAnimalId() == animalIdToRemove)
+
+                Console.WriteLine("What animal do you want to remove? ");
+                Console.WriteLine("Type in the animal Id");
+
+                if (!int.TryParse(Console.ReadLine(), out int animalIdToRemove))
                 {
-                    indexToRemove = i;
-                    break;
+                    Console.WriteLine("invalid ID input ");
+                    return;
+                }
+
+                int indexToRemove = -1;
+                for (int i = 0; i < animals.Count; i++)
+                {
+                    if (animals[i].GetAnimalId() == animalIdToRemove)
+                    {
+                        indexToRemove = i;
+                        break;
+                    }
+                }
+                if (animalIdToRemove != -1)
+                {
+                    animals.RemoveAt(indexToRemove);
+                    Console.WriteLine("Animal with ID: " + animalIdToRemove + ", successfully removed!");
+                }
+                else
+                {
+                    Console.WriteLine("Animal with ID: " + animalIdToRemove + " was not found!");
                 }
             }
-            if (animalIdToRemove != -1)
+
+            catch (Exception ex)
             {
-                animals.RemoveAt(indexToRemove);
-                Console.WriteLine("Animal with ID: " + animalIdToRemove + ", successfully removed!");
-            }
-            else
-            {
-                Console.WriteLine("Animal with ID: " + animalIdToRemove + " was not found!");
+                Console.WriteLine("Write an ID that exist.");
+
             }
 
         }
