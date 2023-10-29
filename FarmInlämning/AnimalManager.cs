@@ -186,6 +186,19 @@ namespace FarmInlämning
 
             GetAnimalIdInput();
             ViewCrop();
+            int animalId = GetAnimalIdInput();
+            if ( animalId > 0) 
+            {
+                Animal selectedAnimal = FindAnimalById(animalId);
+                if ( selectedAnimal != null ) 
+                { 
+                 ViewCrop();
+                }
+                else 
+                {
+                    Console.WriteLine("There is no animal with this ID.");
+                }
+            }
         }
 
         private int GetAnimalIdInput()
@@ -225,6 +238,7 @@ namespace FarmInlämning
             }
             else
             {
+                Console.WriteLine("Here are the avaliable crops: ");
                 int index = 1;
                 foreach (Crop crop in crops)
                 {
@@ -234,6 +248,11 @@ namespace FarmInlämning
             } 
 
         }
+        private Animal FindAnimalById(int id)
+        {
+            return animals.FirstOrDefault(animal => animal.GetAnimalId() == id);
+        }
+
     }
 }
 
