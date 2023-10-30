@@ -215,7 +215,8 @@ namespace FarmInlämning
 
                         else
                         {
-                            Console.WriteLine("There are no avaliable crops for feeding.");
+                            Console.WriteLine($"You feed  {selectedAnimal.AnimalsName}, with {selectedCrop.cropsName}");
+                            break;
                         }
                     }
 
