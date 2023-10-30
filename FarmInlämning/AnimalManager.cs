@@ -199,9 +199,9 @@ namespace FarmInlämning
                     {
                         Console.WriteLine("There are no avaliable crops for feeding.");
                     }
-                    else if(avaliableCrops = true)
+                    if(avaliableCrops = true)
                     {
-                        
+                        Console.WriteLine("what kind of food do you want ot feed the animal? enter by ID: ");
                     }
 
                     else 
