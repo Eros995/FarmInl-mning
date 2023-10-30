@@ -183,62 +183,47 @@ namespace FarmInlämning
 
         private void FeedAnimal()
         {
-            
+
             Console.WriteLine("What animal would you like to feed?");
             ViewAnimal();
-           
+
             int animalId = GetAnimalIdInput();
-            if ( animalId > 0) 
+            if (animalId > 0)
             {
                 Animal selectedAnimal = FindAnimalById(animalId);
-                if ( selectedAnimal != null ) 
+                if (selectedAnimal != null)
                 {
                     ViewCrop();
                     Console.WriteLine($"You chose: {selectedAnimal.AnimalsName}, And the crop it accepts is : {selectedAnimal.GetAcceptableCropType()}");
                     bool avaliableCrops = true;
 
-                    foreach(Crop crop in crops)
-                    {
-                        if(crop.GetCropType() == selectedAnimal.GetAcceptableCropType() && crop.GetCropQuantity() < 0)
-                        {
-                            avaliableCrops = false;
-                            break;
-                        }
-                    }
 
-                    if (!avaliableCrops) 
-                    {
-                        Console.WriteLine("There are no avaliable crops for feeding.");
-                    }
-
-                    else 
+                    while (avaliableCrops)
                     {
                         int cropId = GetCropIdInput();
                         Crop selectedCrop = crops.FirstOrDefault(crop => crop.GetCropId() == cropId);
 
-                         if (selectedCrop != null && selectedCrop.GetCropType() == selectedAnimal.GetAcceptableCropType() && selectedCrop.GetCropQuantity() > 0)
-                         {
+                        if (selectedCrop != null && selectedCrop.GetCropType() == selectedAnimal.GetAcceptableCropType() && selectedCrop.GetCropQuantity() > 0)
+                        {
 
                             Console.WriteLine($"{selectedAnimal.AnimalsName} has been fed with {selectedCrop.cropsName}.");
-                         }
-                         else
+                        }
+                        else if (selectedCrop != null && selectedCrop.GetCropType() == selectedAnimal.GetAcceptableCropType() && selectedCrop.GetCropQuantity() < 0)
                         {
                             Console.WriteLine("Invalid crop selection or insufficient quantity.");
                         }
+
+                        else
+                        {
+                            Console.WriteLine("There are no avaliable crops for feeding.");
+                        }
                     }
-                    if (!avaliableCrops) 
-                    {
-                        Console.WriteLine("There are no avaliable crops for feeding.");
-                    }
-                }   
-                else 
-                {
-                    Console.WriteLine("There is no animal with this ID.");
+
                 }
             }
+
+
         }
-
-
         private int GetCropIdInput()
         {
             int cropId;
