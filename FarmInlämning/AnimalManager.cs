@@ -296,7 +296,6 @@ namespace FarmInlämning
         {
             return animals.FirstOrDefault(animal => animal.GetAnimalId() == id);
         }
-
     }
 }
 
