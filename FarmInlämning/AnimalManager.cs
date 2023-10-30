@@ -13,12 +13,12 @@ namespace FarmInlämning
         public AnimalManager()
         {
             crops = new List<Crop>();
-            animals.Add(new Animal("Carl" , 123, "Goat", "Hay"));
-            animals.Add(new Animal("Megan", 124, "Horse", "Carrot"));
-            animals.Add(new Animal("Bob", 125, "Cow", "Wheat"));
-            animals.Add(new Animal("Jake", 127, "Cow", "Wheat"));
-            animals.Add(new Animal("John", 128, "Chicken", "Seeds"));
-            animals.Add(new Animal("Trump", 129, "Pig", "Apple"));
+            animals.Add(new Animal("Carl" , 123, "Goat", "Plant"));
+            animals.Add(new Animal("Megan", 124, "Horse", "Vegetable"));
+            animals.Add(new Animal("Bob", 125, "Cow", "Plant"));
+            animals.Add(new Animal("Jake", 127, "Cow", "Plant"));
+            animals.Add(new Animal("John", 128, "Chicken", "Plant"));
+            animals.Add(new Animal("Trump", 129, "Pig", "Fruit"));
 
             crops.Add(new Crop("Seeds", 1000, "Plant", 500));
             crops.Add(new Crop("Carrot" , 1001, "Vegetable", 200));
@@ -205,18 +205,20 @@ namespace FarmInlämning
 
                         if (selectedCrop != null && selectedCrop.GetCropType() == selectedAnimal.GetAcceptableCropType() && selectedCrop.GetCropQuantity() > 0)
                         {
-
-                            Console.WriteLine($"{selectedAnimal.AnimalsName} has been fed with {selectedCrop.cropsName}.");
+                            Console.WriteLine($"How much quantity of the crop would you like to use? There is {selectedCrop.GetCropQuantity} left of {selectedCrop.cropsName} ");
+                            string quantityInput = Console.ReadLine();
+                            int.Parse(quantityInput);
+                            Console.WriteLine($"{selectedAnimal.AnimalsName} has been fed with {quantityInput}, of {selectedCrop.cropsName}.");
+                            Console.WriteLine($"There is {selectedCrop.GetCropQuantity} of {selectedCrop.cropsName} left. ");
                         }
-                        else if (selectedCrop != null && selectedCrop.GetCropType() == selectedAnimal.GetAcceptableCropType() && selectedCrop.GetCropQuantity() < 0)
+                        else if (selectedCrop.CropType != selectedAnimal.GetAcceptableCropType())
                         {
-                            Console.WriteLine("Invalid crop selection or insufficient quantity.");
+                            Console.WriteLine($"You tried to feed {selectedAnimal.AnimalsName} with {selectedCrop.CropType}");
+                            Console.WriteLine($"{selectedAnimal.AnimalsName} does not eat that.");
                         }
-
-                        else
+                        else 
                         {
-                            Console.WriteLine($"You feed  {selectedAnimal.AnimalsName}, with {selectedCrop.cropsName}");
-                            break;
+                            Console.WriteLine($"There is no more {selectedCrop.cropsName} left. ");
                         }
 
                         
@@ -227,6 +229,7 @@ namespace FarmInlämning
 
 
         }
+
         private int GetCropIdInput()
         {
             int cropId;
@@ -287,7 +290,7 @@ namespace FarmInlämning
                 foreach (Crop crop in crops)
                 {
                     Console.WriteLine($"Crop: {index}, Name: {crop.cropsName}, Crop Type: {crop.GetCropType()} Qauntity: {crop.GetCropQuantity()}, CropID: {crop.GetCropId()}");
-                    Console.WriteLine("");
+                    Console.WriteLine(""); 
                     index++;
                 }
             } 
