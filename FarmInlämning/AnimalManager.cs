@@ -85,6 +85,7 @@ namespace FarmInlämning
                 foreach (Animal animal in animals)
                 {
                     Console.WriteLine($"Animal: {index}, Name: {animal.AnimalsName}, Animal ID: {animal.GetAnimalId()}, Species: {animal.GetSpecies()}, CropType: {animal.GetAcceptableCropType()}");
+                    Console.WriteLine("");
                     index++;
                 }
             }
@@ -275,6 +276,7 @@ namespace FarmInlämning
                 foreach (Crop crop in crops)
                 {
                     Console.WriteLine($"Crop: {index}, Name: {crop.cropsName}, Crop Type: {crop.GetCropType()} Qauntity: {crop.GetCropQuantity()}, CropID: {crop.GetCropId()}");
+                    Console.WriteLine("");
                     index++;
                 }
             } 
