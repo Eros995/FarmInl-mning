@@ -1,5 +1,6 @@
 ﻿using System.ComponentModel.Design;
 using System.Reflection.Metadata.Ecma335;
+using System.Security.Cryptography.X509Certificates;
 using System.Threading.Channels;
 
 namespace FarmInlämning
@@ -194,19 +195,40 @@ namespace FarmInlämning
                 {
                     ViewCrop();
                     Console.WriteLine($"You chose: {selectedAnimal.AnimalsName}, And the crop it accepts is : {selectedAnimal.GetAcceptableCropType()}");
-                    bool avaliableCrops = false;
+                    bool avaliableCrops = true;
+
+                    foreach(Crop crop in crops)
+                    {
+                        if(crop.GetCropType() == selectedAnimal.GetAcceptableCropType() && crop.GetCropQuantity() < 0)
+                        {
+                            avaliableCrops = false;
+                            break;
+                        }
+                    }
+
                     if (!avaliableCrops) 
                     {
                         Console.WriteLine("There are no avaliable crops for feeding.");
-                    }
-                    if(avaliableCrops = true)
-                    {
-                        Console.WriteLine("what kind of food do you want ot feed the animal? enter by ID: ");
                     }
 
                     else 
                     {
                         int cropId = GetCropIdInput();
+                        Crop selectedCrop = crops.FirstOrDefault(crop => crop.GetCropId() == cropId);
+
+                         if (selectedCrop != null && selectedCrop.GetCropType() == selectedAnimal.GetAcceptableCropType() && selectedCrop.GetCropQuantity() > 0)
+                         {
+
+                            Console.WriteLine($"{selectedAnimal.AnimalsName} has been fed with {selectedCrop.cropsName}.");
+                         }
+                         else
+                        {
+                            Console.WriteLine("Invalid crop selection or insufficient quantity.");
+                        }
+                    }
+                    if (!avaliableCrops) 
+                    {
+                        Console.WriteLine("There are no avaliable crops for feeding.");
                     }
                 }   
                 else 
@@ -215,6 +237,7 @@ namespace FarmInlämning
                 }
             }
         }
+
 
         private int GetCropIdInput()
         {
