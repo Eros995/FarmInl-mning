@@ -12,19 +12,12 @@ namespace FarmInlämning
         List<Animal> animals = new List<Animal>();
         public AnimalManager()
         {
-            crops = new List<Crop>();
             animals.Add(new Animal("Carl" , 123, "Goat", "Plant"));
             animals.Add(new Animal("Megan", 124, "Horse", "Vegetable"));
             animals.Add(new Animal("Bob", 125, "Cow", "Plant"));
             animals.Add(new Animal("Jake", 127, "Cow", "Plant"));
             animals.Add(new Animal("John", 128, "Chicken", "Plant"));
             animals.Add(new Animal("Trump", 129, "Pig", "Fruit"));
-
-            crops.Add(new Crop("Seeds", 1000, "Plant", 500));
-            crops.Add(new Crop("Carrot" , 1001, "Vegetable", 200));
-            crops.Add(new Crop("Wheat" , 1002, "Plant", 150));
-            crops.Add(new Crop("Hay" , 1003, "Plant", 250));
-            crops.Add(new Crop("Apple" , 1004, "Fruit", 450));
         }
 
 
@@ -200,16 +193,19 @@ namespace FarmInlämning
 
                     while (avaliableCrops)
                     {
+                        
                         int cropId = GetCropIdInput();
                         Crop selectedCrop = crops.FirstOrDefault(crop => crop.GetCropId() == cropId);
 
                         if (selectedCrop != null && selectedCrop.GetCropType() == selectedAnimal.GetAcceptableCropType() && selectedCrop.GetCropQuantity() > 0)
                         {
-                            Console.WriteLine($"How much quantity of the crop would you like to use? There is {selectedCrop.GetCropQuantity} left of {selectedCrop.cropsName} ");
+                            Console.WriteLine($"How much quantity of the crop would you like to use? There is {selectedCrop.GetCropQuantity()} left of {selectedCrop.cropsName} ");
                             string quantityInput = Console.ReadLine();
-                            int.Parse(quantityInput);
+                            int quantity = int.Parse(quantityInput);
                             Console.WriteLine($"{selectedAnimal.AnimalsName} has been fed with {quantityInput}, of {selectedCrop.cropsName}.");
-                            Console.WriteLine($"There is {selectedCrop.GetCropQuantity} of {selectedCrop.cropsName} left. ");
+                            selectedCrop.SetCropQuantity(selectedCrop.GetCropQuantity() - quantity);
+                            Console.WriteLine($"There is {selectedCrop.GetCropQuantity()} of {selectedCrop.cropsName} left. ");
+                            break;
                         }
                         else if (selectedCrop.CropType != selectedAnimal.GetAcceptableCropType())
                         {
