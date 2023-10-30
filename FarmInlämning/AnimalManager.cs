@@ -12,7 +12,6 @@ namespace FarmInlämning
         List<Animal> animals = new List<Animal>();
         public AnimalManager()
         {
-            crops = new List<Crop>();
             animals.Add(new Animal("Carl" , 123, "Goat", "Plant"));
             animals.Add(new Animal("Megan", 124, "Horse", "Vegetable"));
             animals.Add(new Animal("Bob", 125, "Cow", "Plant"));
