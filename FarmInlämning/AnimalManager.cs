@@ -194,16 +194,15 @@ namespace FarmInlämning
                     ViewCrop();
                     Console.WriteLine($"You chose: {selectedAnimal.AnimalsName}, And the crop it accepts is : {selectedAnimal.GetAcceptableCropType()}");
                     bool avaliableCrops = false;
-                    foreach (Crop crop in crops) 
-                    {
-                        if (string.Equals(crop.GetCropType(), selectedAnimal.GetAcceptableCropType(), StringComparison.OrdinalIgnoreCase) && crop.GetCropQuantity() > 0)
-                            Console.WriteLine($"Crop ID: {crop.GetCropId()}, Name: {crop.cropsName}, Quantity: {crop.GetCropQuantity()}");
-                         avaliableCrops = true;
-                    }
                     if (!avaliableCrops) 
                     {
                         Console.WriteLine("There are no avaliable crops for feeding.");
                     }
+                    else if(avaliableCrops = true)
+                    {
+                        
+                    }
+
                     else 
                     {
                         int cropId = GetCropIdInput();

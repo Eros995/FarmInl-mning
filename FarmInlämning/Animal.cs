@@ -63,10 +63,9 @@
         public string GetAcceptableCropType()
         { return AcceptableCropTypes; }
 
-        public string AnimalsName
+        public string AnimalsName()
         {
-            get { return Name; }
-            set { Name = value; }
+            return AnimalName;
         }
         
 
