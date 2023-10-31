@@ -23,6 +23,8 @@ namespace FarmInlämning
             crops.Add(new Crop("Apple", 1004, "Fruit", 450));
             
 
+
+
         }
         public void CropManagerMenu()
         {
@@ -158,11 +160,18 @@ namespace FarmInlämning
                 Console.WriteLine("This ID doesn´t exist. Try again. " );
             }
         }
-
+        public void FeedAnimal(int cropId, int quantity)
+        {
+            Crop selectedCrop = crops.FirstOrDefault(crop => crop.GetCropId() == cropId);
+            if (selectedCrop != null)
+            {
+                selectedCrop.SetCropQuantity(selectedCrop.GetCropQuantity() - quantity);
+            }
+        }
         internal List<Crop> GetCrops()
         {
             // You can return a copy of the private crops list to maintain data encapsulation.
-            return crops;
+            return new List<Crop>(crops);
         }
 
 

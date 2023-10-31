@@ -209,8 +209,9 @@ namespace FarmInlämning
                             string quantityInput = Console.ReadLine();
                             int quantity = int.Parse(quantityInput);
                             Console.WriteLine($"{selectedAnimal.AnimalsName} has been fed with {quantityInput}, of {selectedCrop.cropsName}.");
-                            selectedCrop.SetCropQuantity(selectedCrop.GetCropQuantity() - quantity);
+                            cropManager.FeedAnimal(cropId, quantity);
                             Console.WriteLine($"There is {selectedCrop.GetCropQuantity()} of {selectedCrop.cropsName} left. ");
+                            availableCrops = cropManager.GetCrops();
                             break;
                         }
                         else if (selectedCrop.CropType != selectedAnimal.GetAcceptableCropType())
@@ -223,7 +224,7 @@ namespace FarmInlämning
                             Console.WriteLine($"There is no more {selectedCrop.cropsName} left. ");
                         }
 
-                        
+                        availableCrops = cropManager.GetCrops();
                     }
 
                 }
@@ -233,6 +234,7 @@ namespace FarmInlämning
         }
         private void ViewCrop()
         {
+            
             if (availableCrops.Count == 0)
             {
                 Console.WriteLine("No crops available.");
