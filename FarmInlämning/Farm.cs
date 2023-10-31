@@ -27,8 +27,8 @@ namespace FarmInlämning
                 Console.WriteLine("2. Access the Crop Manager");
                 Console.WriteLine("3. Exit");
                 Console.WriteLine("Make your choice: ");
-                
-                String choice = Console.ReadLine();
+
+                string choice = Console.ReadLine();
 
                 switch (choice) 
                 {

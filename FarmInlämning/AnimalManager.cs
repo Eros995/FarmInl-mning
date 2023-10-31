@@ -12,7 +12,7 @@ namespace FarmInlämning
         List<Crop> availableCrops;
 
         List<Animal> animals = new List<Animal>();
-        public AnimalManager()
+        public AnimalManager(CropManager cropManager)
         {
             animals.Add(new Animal("Carl" , 123, "Goat", "Plant"));
             animals.Add(new Animal("Megan", 124, "Horse", "Vegetable"));
@@ -195,8 +195,6 @@ namespace FarmInlämning
                     Console.WriteLine("");
                     ViewCrop();
                     bool avaliableCrops = true;
-
-
                     while (avaliableCrops)
                     {
                         
@@ -208,13 +206,16 @@ namespace FarmInlämning
                             Console.WriteLine($"How much quantity of the crop would you like to use? There is {selectedCrop.GetCropQuantity()} left of {selectedCrop.cropsName} ");
                             string quantityInput = Console.ReadLine();
                             int quantity = int.Parse(quantityInput);
+                            Crop availableCrop = availableCrops.FirstOrDefault(crop => crop.GetCropId() == cropId);
+                            if (availableCrop != null)
+                            {
+                                availableCrop.SetCropQuantity(availableCrop.GetCropQuantity() - quantity);
+                            }
                             Console.WriteLine($"{selectedAnimal.AnimalsName} has been fed with {quantityInput}, of {selectedCrop.cropsName}.");
-                            cropManager.FeedAnimal(cropId, quantity);
                             Console.WriteLine($"There is {selectedCrop.GetCropQuantity()} of {selectedCrop.cropsName} left. ");
-                            availableCrops = cropManager.GetCrops();
                             break;
                         }
-                        else if (selectedCrop.CropType != selectedAnimal.GetAcceptableCropType())
+                        else if (selectedCrop.CropType != selectedAnimal.GetAcceptableCropType()) // om vi skriver in ett id som in finns på crops den crashar med null,(måste fixa)
                         {
                             Console.WriteLine($"You tried to feed {selectedAnimal.AnimalsName} with {selectedCrop.CropType}");
                             Console.WriteLine($"{selectedAnimal.AnimalsName} does not eat that.");
@@ -224,7 +225,7 @@ namespace FarmInlämning
                             Console.WriteLine($"There is no more {selectedCrop.cropsName} left. ");
                         }
 
-                        availableCrops = cropManager.GetCrops();
+                        
                     }
 
                 }
