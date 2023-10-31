@@ -8,7 +8,9 @@ namespace FarmInlämning
     public class AnimalManager
     {
 
-        List<Crop> crops;
+        CropManager cropManager = new CropManager();
+        List<Crop> availableCrops;
+
         List<Animal> animals = new List<Animal>();
         public AnimalManager()
         {
@@ -18,6 +20,8 @@ namespace FarmInlämning
             animals.Add(new Animal("Jake", 127, "Cow", "Plant"));
             animals.Add(new Animal("John", 128, "Chicken", "Plant"));
             animals.Add(new Animal("Trump", 129, "Pig", "Fruit"));
+
+            availableCrops = cropManager.GetCrops();
         }
 
 
@@ -186,8 +190,10 @@ namespace FarmInlämning
                 Animal selectedAnimal = FindAnimalById(animalId);
                 if (selectedAnimal != null)
                 {
-                    ViewCrop();
+                    
                     Console.WriteLine($"You chose: {selectedAnimal.AnimalsName}, And the crop it accepts is : {selectedAnimal.GetAcceptableCropType()}");
+                    Console.WriteLine("");
+                    ViewCrop();
                     bool avaliableCrops = true;
 
 
@@ -195,7 +201,7 @@ namespace FarmInlämning
                     {
                         
                         int cropId = GetCropIdInput();
-                        Crop selectedCrop = crops.FirstOrDefault(crop => crop.GetCropId() == cropId);
+                        Crop selectedCrop = availableCrops.FirstOrDefault(crop => crop.GetCropId() == cropId);
 
                         if (selectedCrop != null && selectedCrop.GetCropType() == selectedAnimal.GetAcceptableCropType() && selectedCrop.GetCropQuantity() > 0)
                         {
@@ -225,9 +231,26 @@ namespace FarmInlämning
 
 
         }
-
-        private int GetCropIdInput()
+        private void ViewCrop()
         {
+            if (availableCrops.Count == 0)
+            {
+                Console.WriteLine("No crops available.");
+            }
+            else
+            {
+                Console.WriteLine("Here are the avaliable crops: ");
+                int index = 1;
+                foreach (Crop crop in availableCrops)
+                {
+                    Console.WriteLine($"Crop: {index}, Name: {crop.cropsName}, Crop Type: {crop.GetCropType()} Qauntity: {crop.GetCropQuantity()}, CropID: {crop.GetCropId()}");
+                    Console.WriteLine("");
+                    index++;
+                }
+            }
+        }
+            private int GetCropIdInput()
+            {
             int cropId;
             while (true)
             {
@@ -273,25 +296,7 @@ namespace FarmInlämning
 
 
         }
-        private void ViewCrop()
-        {
-            if (crops.Count == 0)
-            {
-                Console.WriteLine("No crops available.");
-            }
-            else
-            {
-                Console.WriteLine("Here are the avaliable crops: ");
-                int index = 1;
-                foreach (Crop crop in crops)
-                {
-                    Console.WriteLine($"Crop: {index}, Name: {crop.cropsName}, Crop Type: {crop.GetCropType()} Qauntity: {crop.GetCropQuantity()}, CropID: {crop.GetCropId()}");
-                    Console.WriteLine(""); 
-                    index++;
-                }
-            } 
-
-        }
+        
         private Animal FindAnimalById(int id)
         {
             return animals.FirstOrDefault(animal => animal.GetAnimalId() == id);

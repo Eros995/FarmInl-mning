@@ -12,7 +12,7 @@ namespace FarmInlämning
     public class CropManager
 
     {
-        List<Crop> crops = new List<Crop>();
+        internal List<Crop> crops = new List<Crop>();
         public CropManager()
         {
             
@@ -159,9 +159,13 @@ namespace FarmInlämning
             }
         }
 
-        
+        internal List<Crop> GetCrops()
+        {
+            // You can return a copy of the private crops list to maintain data encapsulation.
+            return crops;
+        }
 
-        
+
 
 
 
