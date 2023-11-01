@@ -191,14 +191,14 @@ namespace FarmInlämning
                 Animal selectedAnimal = FindAnimalById(animalId);
                 if (selectedAnimal != null)
                 {
-                    
+
                     Console.WriteLine($"You chose: {selectedAnimal.AnimalsName}, And the crop it accepts is : {selectedAnimal.GetAcceptableCropType()}");
                     Console.WriteLine("");
                     ViewCropList();
                     bool avaliableCrops = true;
                     while (avaliableCrops)
                     {
-                        
+
                         int cropId = GetCropIdInput();
                         Crop selectedCrop = availableCrops.FirstOrDefault(crop => crop.GetCropId() == cropId);
                         if (selectedCrop != null)
@@ -207,39 +207,36 @@ namespace FarmInlämning
                             {
                                 Console.WriteLine($"How much quantity of the crop would you like to use? There is {selectedCrop.GetCropQuantity()} left of {selectedCrop.cropsName} ");
                                 string quantityInput = Console.ReadLine();
-                                int quantity = int.Parse(quantityInput);
-                                Crop availableCrop = availableCrops.FirstOrDefault(crop => crop.GetCropId() == cropId);
-                                if (availableCrop != null)
-                                {
-                                    availableCrop.SetCropQuantity(availableCrop.GetCropQuantity() - quantity);
-                                }
-                                Console.WriteLine($"{selectedAnimal.AnimalsName} has been fed with {quantityInput}, of {selectedCrop.cropsName}.");
-                                Console.WriteLine($"There is {selectedCrop.GetCropQuantity()} of {selectedCrop.cropsName} left. ");
-                                break;
-                            }
-                            else if (selectedCrop.CropType != selectedAnimal.GetAcceptableCropType()) // om vi skriver in ett id som in finns på crops den crashar med null,(måste fixa)
-                            {
-                                Console.WriteLine($"You tried to feed {selectedAnimal.AnimalsName} with {selectedCrop.CropType}");
-                                Console.WriteLine($"{selectedAnimal.AnimalsName} does not eat that.");
-                            }
-                            else
-                            {
-                                Console.WriteLine($"There is no more {selectedCrop.cropsName} left. ");
-                                break;
-                            }
 
-                        }
-                        else 
-                        {
-                            Console.WriteLine("Invalid cropID, please enter a cropID that is on the list. ");
+                                if (int.TryParse(quantityInput, out int quantity) && quantity > 0)
+                                {
+                                    if (quantity <= selectedCrop.GetCropQuantity())
+                                    {
+                                        selectedCrop.SetCropQuantity(selectedCrop.GetCropQuantity() - quantity);
+
+                                        Console.WriteLine($"{selectedAnimal.AnimalsName} has been fed with {quantity}, of {selectedCrop.cropsName}.");
+                                        Console.WriteLine($"There is {selectedCrop.GetCropQuantity()} of {selectedCrop.cropsName} left. ");
+                                        // Additional code for the updated list or any other features you need
+                                    }
+                                    else
+                                    {
+                                        Console.WriteLine($"There is not enough {selectedCrop.cropsName} left. ");
+                                        // Additional code for handling this situation, if needed
+                                    }
+                                    break;
+                                }
+                                else
+                                {
+                                    Console.WriteLine("Invalid input. Please enter a valid positive integer quantity.");
+                                }
+                            }
                         }
                     }
-
                 }
             }
-
-            
         }
+
+                              
          
         private void ViewCropList()
         {
