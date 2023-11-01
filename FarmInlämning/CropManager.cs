@@ -170,7 +170,7 @@ namespace FarmInlämning
         }
         internal List<Crop> GetCrops()
         {
-            // You can return a copy of the private crops list to maintain data encapsulation.
+           
             return new List<Crop>(crops);
         }
 

@@ -220,8 +220,8 @@ namespace FarmInlämning
                                     }
                                     else
                                     {
-                                        Console.WriteLine($"There is not enough {selectedCrop.cropsName} left. ");
-                                        // Additional code for handling this situation, if needed
+                                        Console.WriteLine($"There is not enough quantity of {selectedCrop.cropsName} left. ");
+                                        Console.WriteLine($"There is only {selectedCrop.GetCropQuantity()}, of {selectedCrop.cropsName} left.");
                                     }
                                     break;
                                 }
@@ -230,6 +230,10 @@ namespace FarmInlämning
                                     Console.WriteLine("Invalid input. Please enter a valid positive integer quantity.");
                                 }
                             }
+                        }
+                        else
+                        {
+                            Console.WriteLine("That CropID does not exsist in the list.");
                         }
                     }
                 }
@@ -257,22 +261,22 @@ namespace FarmInlämning
                 }
             }
         }
-            private int GetCropIdInput()
-            {
+        private int GetCropIdInput()
+        {
             int cropId;
             while (true)
             {
                 Console.WriteLine("Please enter the ID of the crop you would like to use for feeding.");
                 string input = Console.ReadLine();
-                if(int.TryParse(input, out cropId)) 
-                { 
-                 return cropId;
+                if (int.TryParse(input, out cropId))
+                {
+                    return cropId;
                 }
-                else 
+                else
                 {
                     Console.WriteLine("Invalid input. Please input a integer ID.");
                 }
-            }   
+            }
         }
 
         private int GetAnimalIdInput()
