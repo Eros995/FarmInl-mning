@@ -32,12 +32,12 @@ namespace FarmInlämning
             {
 
 
-                Console.WriteLine("What would you like to do?");
+                Console.WriteLine("Welcome to the Animal Manager! What would you like to do? ");
                 Console.WriteLine("1. View animal");
                 Console.WriteLine("2. Add animal");
                 Console.WriteLine("3. Remove animal");
                 Console.WriteLine("4. Feed animal");
-                Console.WriteLine("5. Quit");
+                Console.WriteLine("5. Go back to the main menu.");
                 string input = Console.ReadLine();
 
                 switch (input)
@@ -79,6 +79,7 @@ namespace FarmInlämning
             }
             else
             {
+                Console.WriteLine("Here are the avaliable animals: ");
                 int index = 1;
                 foreach (Animal animal in animals)
                 {
@@ -193,47 +194,54 @@ namespace FarmInlämning
                     
                     Console.WriteLine($"You chose: {selectedAnimal.AnimalsName}, And the crop it accepts is : {selectedAnimal.GetAcceptableCropType()}");
                     Console.WriteLine("");
-                    ViewCrop();
+                    ViewCropList();
                     bool avaliableCrops = true;
                     while (avaliableCrops)
                     {
                         
                         int cropId = GetCropIdInput();
                         Crop selectedCrop = availableCrops.FirstOrDefault(crop => crop.GetCropId() == cropId);
-
-                        if (selectedCrop != null && selectedCrop.GetCropType() == selectedAnimal.GetAcceptableCropType() && selectedCrop.GetCropQuantity() > 0)
+                        if (selectedCrop != null)
                         {
-                            Console.WriteLine($"How much quantity of the crop would you like to use? There is {selectedCrop.GetCropQuantity()} left of {selectedCrop.cropsName} ");
-                            string quantityInput = Console.ReadLine();
-                            int quantity = int.Parse(quantityInput);
-                            Crop availableCrop = availableCrops.FirstOrDefault(crop => crop.GetCropId() == cropId);
-                            if (availableCrop != null)
+                            if (selectedCrop.GetCropType() == selectedAnimal.GetAcceptableCropType() && selectedCrop.GetCropQuantity() > 0)
                             {
-                                availableCrop.SetCropQuantity(availableCrop.GetCropQuantity() - quantity);
+                                Console.WriteLine($"How much quantity of the crop would you like to use? There is {selectedCrop.GetCropQuantity()} left of {selectedCrop.cropsName} ");
+                                string quantityInput = Console.ReadLine();
+                                int quantity = int.Parse(quantityInput);
+                                Crop availableCrop = availableCrops.FirstOrDefault(crop => crop.GetCropId() == cropId);
+                                if (availableCrop != null)
+                                {
+                                    availableCrop.SetCropQuantity(availableCrop.GetCropQuantity() - quantity);
+                                }
+                                Console.WriteLine($"{selectedAnimal.AnimalsName} has been fed with {quantityInput}, of {selectedCrop.cropsName}.");
+                                Console.WriteLine($"There is {selectedCrop.GetCropQuantity()} of {selectedCrop.cropsName} left. ");
+                                break;
                             }
-                            Console.WriteLine($"{selectedAnimal.AnimalsName} has been fed with {quantityInput}, of {selectedCrop.cropsName}.");
-                            Console.WriteLine($"There is {selectedCrop.GetCropQuantity()} of {selectedCrop.cropsName} left. ");
-                            break;
-                        }
-                        else if (selectedCrop.CropType != selectedAnimal.GetAcceptableCropType()) // om vi skriver in ett id som in finns på crops den crashar med null,(måste fixa)
-                        {
-                            Console.WriteLine($"You tried to feed {selectedAnimal.AnimalsName} with {selectedCrop.CropType}");
-                            Console.WriteLine($"{selectedAnimal.AnimalsName} does not eat that.");
+                            else if (selectedCrop.CropType != selectedAnimal.GetAcceptableCropType()) // om vi skriver in ett id som in finns på crops den crashar med null,(måste fixa)
+                            {
+                                Console.WriteLine($"You tried to feed {selectedAnimal.AnimalsName} with {selectedCrop.CropType}");
+                                Console.WriteLine($"{selectedAnimal.AnimalsName} does not eat that.");
+                            }
+                            else
+                            {
+                                Console.WriteLine($"There is no more {selectedCrop.cropsName} left. ");
+                                break;
+                            }
+
                         }
                         else 
                         {
-                            Console.WriteLine($"There is no more {selectedCrop.cropsName} left. ");
+                            Console.WriteLine("Invalid cropID, please enter a cropID that is on the list. ");
                         }
-
-                        
                     }
 
                 }
             }
 
-
+            
         }
-        private void ViewCrop()
+         
+        private void ViewCropList()
         {
             
             if (availableCrops.Count == 0)

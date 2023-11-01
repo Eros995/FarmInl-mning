@@ -31,12 +31,11 @@ namespace FarmInlämning
             bool croprunning = true;
             while (croprunning)
             {
-                Console.WriteLine("What would you like to do? ");
+                Console.WriteLine("Welcome to the Crop Manager! What would you like to do? ");
                 Console.WriteLine("1. View Crops. ");
                 Console.WriteLine("2. Add Crop. ");
                 Console.WriteLine("3. Remove Crop. ");
-                Console.WriteLine("4. Get Crops. ");
-                Console.WriteLine("5. Quit ");
+                Console.WriteLine("5. Go back to the main menu.");
 
                 string choice = Console.ReadLine();
 
@@ -73,6 +72,7 @@ namespace FarmInlämning
                 int index = 1;
                 foreach (Crop crop in crops)
                 {
+                    Console.WriteLine("Here are the avaliable crops: ");
                     Console.WriteLine($"Crop: {index}, Name: {crop.cropsName}, Crop Type: {crop.GetCropType()} Qauntity: {crop.GetCropQuantity()}, CropID: {crop.GetCropId()}");
                     Console.WriteLine("");
                     index++;
