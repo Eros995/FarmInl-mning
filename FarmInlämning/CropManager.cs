@@ -148,9 +148,7 @@ namespace FarmInlämning
             ViewCrop();
             while (true)
             {
-                Console.WriteLine("What kind of crop do you want to remove: ");
-                
-                Console.WriteLine("Enter the CropID: ");
+                Console.WriteLine("Type in the ID of the crop you would like to remove.: ");
 
                 if (int.TryParse(Console.ReadLine(), out int cropIdToRemove))
                 {
@@ -190,14 +188,6 @@ namespace FarmInlämning
             }
         }
 
-        public void FeedAnimal(int cropId, int quantity)
-        {
-            Crop selectedCrop = crops.FirstOrDefault(crop => crop.GetCropId() == cropId);
-            if (selectedCrop != null)
-            {
-                selectedCrop.SetCropQuantity(selectedCrop.GetCropQuantity() - quantity);
-            }
-        }
         internal List<Crop> GetCrops()
         {
            

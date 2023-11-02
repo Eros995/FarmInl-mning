@@ -151,12 +151,10 @@ namespace FarmInlämning
 
             while (true)
             {
-                Console.WriteLine("What animal do you want to remove? ");
-                Console.WriteLine("Type The ID of the animal:");
-
+                Console.WriteLine("Type in the ID of the animal you would like to remove. ");
                 if (int.TryParse(Console.ReadLine(), out animalIdToRemove))
                 {
-                    break; // Break out of the loop if a valid integer is entered
+                    break; 
                 }
                 else
                 {
@@ -229,7 +227,7 @@ namespace FarmInlämning
 
                                         Console.WriteLine($"{selectedAnimal.AnimalsName} has been fed with {quantity}, of {selectedCrop.cropsName}.");
                                         Console.WriteLine($"There is {selectedCrop.GetCropQuantity()} of {selectedCrop.cropsName} left. ");
-                                        // Additional code for the updated list or any other features you need
+                                        
                                     }
                                     else
                                     {
