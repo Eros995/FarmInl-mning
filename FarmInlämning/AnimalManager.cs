@@ -103,6 +103,11 @@ namespace FarmInlämning
             {
                 Console.WriteLine("What is the name?");
                 name = Console.ReadLine();
+                if (!IsAlphabetic(name))
+                {
+                    Console.WriteLine("Write the name with letters not with numbers.");
+                    Console.WriteLine("");
+                }
             } while (!IsAlphabetic(name));
             
             int animalId = animals.Max(animal => animal.GetAnimalId());
@@ -113,6 +118,11 @@ namespace FarmInlämning
             {
                 Console.WriteLine("What is the species?");
                 species = Console.ReadLine();
+                if (!IsAlphabetic(species))
+                {
+                    Console.WriteLine("Write the species with letters not with numbers.");
+                    Console.WriteLine("");
+                }
             } while (!IsAlphabetic(species));
 
             string acceptableCropType;
@@ -120,6 +130,11 @@ namespace FarmInlämning
             {
                 Console.WriteLine("What is the acceptable crop type?");
                 acceptableCropType = Console.ReadLine();
+                if (!IsAlphabetic(acceptableCropType))
+                {
+                    Console.WriteLine("Write the acceptable crop type with letters not with numbers.");
+                    Console.WriteLine("");
+                }
             } while (!IsAlphabetic(acceptableCropType));
 
             Animal newAnimal = new Animal(name, animalId, species, acceptableCropType);

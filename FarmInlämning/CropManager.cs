@@ -89,6 +89,11 @@ namespace FarmInlämning
             {
                 Console.WriteLine("Enter the name of the new crop:");
                 name = Console.ReadLine();
+                if (!IsAlphabetic(name))
+                {
+                    Console.WriteLine("Write the name with letters not with numbers.");
+                    Console.WriteLine("");
+                }
             } while (!IsAlphabetic(name));
 
             string cropType;
@@ -96,6 +101,11 @@ namespace FarmInlämning
             {
                 Console.WriteLine("Enter the crop type:");
                 cropType = Console.ReadLine();
+                if (!IsAlphabetic(cropType))
+                {
+                    Console.WriteLine("Crop type is not a number, write with letters.");
+                    Console.WriteLine("");
+                }
             } while (!IsAlphabetic(cropType));
 
 
