@@ -22,6 +22,7 @@ namespace FarmInlämning
             crops.Add(new Crop("Wheat", 1002, "Plant", 150));
             crops.Add(new Crop("Hay", 1003, "Plant", 250));
             crops.Add(new Crop("Apple", 1004, "Fruit", 450));
+            
 
 
 
@@ -83,11 +84,20 @@ namespace FarmInlämning
 
         private void AddCrop()
         {
-            Console.WriteLine("Enter the name of the new crop:");
-            string name = Console.ReadLine();
+            string name;
+            do
+            {
+                Console.WriteLine("Enter the name of the new crop:");
+                name = Console.ReadLine();
+            } while (!IsAlphabetic(name));
 
-            Console.WriteLine("Enter the crop type:");
-            string cropType = Console.ReadLine();
+            string cropType;
+            do
+            {
+                Console.WriteLine("Enter the crop type:");
+                cropType = Console.ReadLine();
+            } while (!IsAlphabetic(cropType));
+
 
             int quantity = 0;
             bool validQuantity = false;
@@ -106,12 +116,12 @@ namespace FarmInlämning
                 }
             }
 
-            int cropId = crops.Max(crop => crop.GetCropId()) + 1;
-            Crop newCrop = new Crop(name, cropId, cropType, quantity);
+            int cropId = crops.Max(crop =>crop.GetCropId());
+            cropId++;
 
             try
             {
-                Crop NewCrop = new Crop(name, cropId, cropType, quantity);
+                Crop newCrop = new Crop(name, cropId, cropType, quantity);
                 crops.Add(newCrop);
                 Console.WriteLine("New crop added successfully!");
             }
@@ -162,14 +172,24 @@ namespace FarmInlämning
                 Console.WriteLine("This ID doesn´t exist. Try again. " );
             }
         }
-        
+        public void FeedAnimal(int cropId, int quantity)
+        {
+            Crop selectedCrop = crops.FirstOrDefault(crop => crop.GetCropId() == cropId);
+            if (selectedCrop != null)
+            {
+                selectedCrop.SetCropQuantity(selectedCrop.GetCropQuantity() - quantity);
+            }
+        }
         internal List<Crop> GetCrops()
         {
            
             return crops;
         }
 
-
+        private bool IsAlphabetic(string input)
+        {
+            return !string.IsNullOrEmpty(input) && input.All(char.IsLetter);
+        }
 
 
 
