@@ -8,8 +8,8 @@ namespace FarmInlämning
     public class AnimalManager
     {
 
-        CropManager cropManager = new CropManager();
-        List<Crop> availableCrops;
+        
+        internal List<Crop> availableCrops;
 
         List<Animal> animals = new List<Animal>();
         public AnimalManager(CropManager cropManager)
@@ -20,7 +20,7 @@ namespace FarmInlämning
             animals.Add(new Animal("Jake", 127, "Cow", "Plant"));
             animals.Add(new Animal("John", 128, "Chicken", "Plant"));
             animals.Add(new Animal("Trump", 129, "Pig", "Fruit"));
-
+          
             availableCrops = cropManager.GetCrops();
         }
 

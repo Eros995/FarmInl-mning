@@ -22,7 +22,6 @@ namespace FarmInlämning
             crops.Add(new Crop("Wheat", 1002, "Plant", 150));
             crops.Add(new Crop("Hay", 1003, "Plant", 250));
             crops.Add(new Crop("Apple", 1004, "Fruit", 450));
-            
 
 
 
@@ -107,12 +106,12 @@ namespace FarmInlämning
                 }
             }
 
-            int cropId = crops.Max(crop =>crop.GetCropId());
-            cropId++;
+            int cropId = crops.Max(crop => crop.GetCropId()) + 1;
+            Crop newCrop = new Crop(name, cropId, cropType, quantity);
 
             try
             {
-                Crop newCrop = new Crop(name, cropId, cropType, quantity);
+                Crop NewCrop = new Crop(name, cropId, cropType, quantity);
                 crops.Add(newCrop);
                 Console.WriteLine("New crop added successfully!");
             }
@@ -163,18 +162,11 @@ namespace FarmInlämning
                 Console.WriteLine("This ID doesn´t exist. Try again. " );
             }
         }
-        public void FeedAnimal(int cropId, int quantity)
-        {
-            Crop selectedCrop = crops.FirstOrDefault(crop => crop.GetCropId() == cropId);
-            if (selectedCrop != null)
-            {
-                selectedCrop.SetCropQuantity(selectedCrop.GetCropQuantity() - quantity);
-            }
-        }
+        
         internal List<Crop> GetCrops()
         {
            
-            return new List<Crop>(crops);
+            return crops;
         }
 
 
