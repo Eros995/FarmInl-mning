@@ -145,29 +145,38 @@ namespace FarmInlämning
 
         private void RemoveAnimal()
         {
-            try
-            {
+            ViewAnimal();
 
-                ViewAnimal();
+            int animalIdToRemove;
+
+            while (true)
+            {
                 Console.WriteLine("What animal do you want to remove? ");
                 Console.WriteLine("Type The ID of the animal:");
 
-                if (!int.TryParse(Console.ReadLine(), out int animalIdToRemove))
+                if (int.TryParse(Console.ReadLine(), out animalIdToRemove))
                 {
-                    Console.WriteLine("invalid ID input ");
-                    return;
+                    break; // Break out of the loop if a valid integer is entered
                 }
+                else
+                {
+                    Console.WriteLine("Invalid ID input. Please enter a valid integer ID.");
+                }
+            }
 
-                int indexToRemove = -1;
-                for (int i = 0; i < animals.Count; i++)
+            int indexToRemove = -1;
+            for (int i = 0; i < animals.Count; i++)
+            {
+                if (animals[i].GetAnimalId() == animalIdToRemove)
                 {
-                    if (animals[i].GetAnimalId() == animalIdToRemove)
-                    {
-                        indexToRemove = i;
-                        break;
-                    }
+                    indexToRemove = i;
+                    break;
                 }
-                if (animalIdToRemove != -1)
+            }
+
+            try
+            {
+                if (indexToRemove != -1)
                 {
                     animals.RemoveAt(indexToRemove);
                     Console.WriteLine("Animal with ID: " + animalIdToRemove + ", successfully removed!");
@@ -177,13 +186,10 @@ namespace FarmInlämning
                     Console.WriteLine("Animal with ID: " + animalIdToRemove + " was not found!");
                 }
             }
-
-            catch (Exception ex)
+            catch (ArgumentOutOfRangeException)
             {
-                Console.WriteLine("Write an ID that exists.");
-
+                Console.WriteLine("Write a valid ID");
             }
-
         }
 
         private void FeedAnimal()

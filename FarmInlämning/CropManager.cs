@@ -141,47 +141,54 @@ namespace FarmInlämning
             }
         }
 
-    
+
 
         private void RemoveCrop()
         {
-            Console.WriteLine("What kind of crop do you want to remove: ");
-            ViewCrop();
-            Console.WriteLine("Enter the CropID: ");
-            
-            if (!int.TryParse(Console.ReadLine(), out int cropIdToRemove))
+            while (true)
             {
-                Console.WriteLine("invalid CropID input ");
-                return;
-            }
+                Console.WriteLine("What kind of crop do you want to remove: ");
+                ViewCrop();
+                Console.WriteLine("Enter the CropID: ");
 
-            int indexToRemove = -1;
-            for(int i = 0; i < crops.Count; i++)
-            {
-                if(crops[i].GetCropId() == cropIdToRemove)
+                if (int.TryParse(Console.ReadLine(), out int cropIdToRemove))
                 {
-                    indexToRemove = i;
-                    break;
-                }
-            }
-            try
-            {
-                if (cropIdToRemove != -1)
-                {
-                    crops.RemoveAt(indexToRemove);
-                    Console.WriteLine("Crop with ID: " + cropIdToRemove + ", successfully removed!");
-                }
+                    int indexToRemove = -1;
+                    for (int i = 0; i < crops.Count; i++)
+                    {
+                        if (crops[i].GetCropId() == cropIdToRemove)
+                        {
+                            indexToRemove = i;
+                            break;
+                        }
+                    }
 
+                    try
+                    {
+                        if (indexToRemove != -1)
+                        {
+                            crops.RemoveAt(indexToRemove);
+                            Console.WriteLine("Crop with ID: " + cropIdToRemove + ", successfully removed!");
+                        }
+                        else
+                        {
+                            Console.WriteLine("Crop with ID: " + cropIdToRemove + " was not found!");
+                        }
+                    }
+                    catch
+                    {
+                        Console.WriteLine("An error occurred while removing the crop.");
+                    }
+
+                    break; 
+                }
                 else
                 {
-                    Console.WriteLine("Crop with ID: " + cropIdToRemove + " was not found!");
+                    Console.WriteLine("Invalid CropID input. Please enter a valid integer CropID.");
                 }
             }
-            catch
-            {
-                Console.WriteLine("This ID doesn´t exist. Try again. " );
-            }
         }
+
         public void FeedAnimal(int cropId, int quantity)
         {
             Crop selectedCrop = crops.FirstOrDefault(crop => crop.GetCropId() == cropId);
