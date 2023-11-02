@@ -106,7 +106,7 @@ namespace FarmInlämning
 
             while (!validId)
             {
-                Console.WriteLine("Type in the ID for the animal, enter three digit number.");
+                Console.WriteLine("Type the ID for the animal, enter three digit number.");
                 if (int.TryParse(Console.ReadLine(), out id)) 
                 {
                     if (AnimalIdExists(id))

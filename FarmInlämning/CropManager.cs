@@ -12,6 +12,7 @@ namespace FarmInlämning
     public class CropManager
 
     {
+        
         internal List<Crop> crops = new List<Crop>();
         public CropManager()
         {
@@ -125,13 +126,13 @@ namespace FarmInlämning
 
         private void RemoveCrop()
         {
-            System.Console.WriteLine("What kind of crop do you want to remove: ");
+            Console.WriteLine("What kind of crop do you want to remove: ");
             ViewCrop();
-            System.Console.WriteLine();
+            Console.WriteLine("Enter the CropID: ");
             
             if (!int.TryParse(Console.ReadLine(), out int cropIdToRemove))
             {
-                Console.WriteLine("invalid ID input ");
+                Console.WriteLine("invalid CropID input ");
                 return;
             }
 
