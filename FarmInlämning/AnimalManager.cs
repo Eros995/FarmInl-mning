@@ -98,39 +98,31 @@ namespace FarmInlämning
 
         private void AddAnimal()
         {
-            Console.WriteLine("What is the name?");
-            string name = Console.ReadLine();
-            //Ta bort rad
-            int id = 0;
-            bool validId = false;
-
-            while (!validId)
+            string name;
+            do
             {
-                Console.WriteLine("Type the ID for the animal, enter three digit number.");
-                if (int.TryParse(Console.ReadLine(), out id)) 
-                {
-                    if (AnimalIdExists(id))
-                    {
-                        Console.WriteLine("An animal with the same ID already exists. Please choose a different ID.");
-                    }
-                    else
-                    {
-                        validId = true; 
-                    }
-                }
-                else
-                {
-                    Console.WriteLine("Invalid ID. Please enter a valid integer ID.");
-                }
-            }
+                Console.WriteLine("What is the name?");
+                name = Console.ReadLine();
+            } while (!IsAlphabetic(name));
+            
+            int animalId = animals.Max(animal => animal.GetAnimalId());
+            animalId++;
 
-            Console.WriteLine("What is the species?");
-            string species = Console.ReadLine();
+            string species;
+            do
+            {
+                Console.WriteLine("What is the species?");
+                species = Console.ReadLine();
+            } while (!IsAlphabetic(species));
 
-            Console.WriteLine("What is the acceptable crop type?");
-            string acceptableCropType = Console.ReadLine();
+            string acceptableCropType;
+            do
+            {
+                Console.WriteLine("What is the acceptable crop type?");
+                acceptableCropType = Console.ReadLine();
+            } while (!IsAlphabetic(acceptableCropType));
 
-            Animal newAnimal = new Animal(name, id, species, acceptableCropType);
+            Animal newAnimal = new Animal(name, animalId, species, acceptableCropType);
             animals.Add(newAnimal);
             Console.WriteLine(name + " was added!");
         }
@@ -312,6 +304,11 @@ namespace FarmInlämning
         private Animal FindAnimalById(int id)
         {
             return animals.FirstOrDefault(animal => animal.GetAnimalId() == id);
+        }
+
+        private bool IsAlphabetic(string input)
+        {
+            return !string.IsNullOrEmpty(input) && input.All(char.IsLetter);
         }
     }
 }
