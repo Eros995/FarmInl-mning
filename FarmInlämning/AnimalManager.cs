@@ -133,9 +133,9 @@ namespace FarmInlämning
             try
             {
 
-
+                ViewAnimal();
                 Console.WriteLine("What animal do you want to remove? ");
-                Console.WriteLine("Type in the animal Id");
+                Console.WriteLine("Type The ID of the animal:");
 
                 if (!int.TryParse(Console.ReadLine(), out int animalIdToRemove))
                 {
