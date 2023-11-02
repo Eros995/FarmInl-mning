@@ -70,9 +70,9 @@ namespace FarmInlämning
             else
             {
                 int index = 1;
+                //Console.WriteLine("Here are the avaliable crops: ");
                 foreach (Crop crop in crops)
                 {
-                    Console.WriteLine("Here are the avaliable crops: ");
                     Console.WriteLine($"Crop: {index}, Name: {crop.cropsName}, Crop Type: {crop.GetCropType()} Qauntity: {crop.GetCropQuantity()}, CropID: {crop.GetCropId()}");
                     Console.WriteLine("");
                     index++;
@@ -126,6 +126,8 @@ namespace FarmInlämning
         private void RemoveCrop()
         {
             System.Console.WriteLine("What kind of crop do you want to remove: ");
+            ViewCrop();
+            System.Console.WriteLine();
             
             if (!int.TryParse(Console.ReadLine(), out int cropIdToRemove))
             {

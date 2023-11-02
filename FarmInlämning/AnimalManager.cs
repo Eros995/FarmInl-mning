@@ -100,13 +100,13 @@ namespace FarmInlämning
         {
             Console.WriteLine("What is the name?");
             string name = Console.ReadLine();
-
+            //Ta bort rad
             int id = 0;
             bool validId = false;
 
             while (!validId)
             {
-                Console.WriteLine("What is the Id?");
+                Console.WriteLine("Type in the ID for the animal, enter three digit number.");
                 if (int.TryParse(Console.ReadLine(), out id)) 
                 {
                     if (AnimalIdExists(id))
