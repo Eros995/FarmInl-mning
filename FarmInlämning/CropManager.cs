@@ -145,10 +145,11 @@ namespace FarmInlämning
 
         private void RemoveCrop()
         {
+            ViewCrop();
             while (true)
             {
                 Console.WriteLine("What kind of crop do you want to remove: ");
-                ViewCrop();
+                
                 Console.WriteLine("Enter the CropID: ");
 
                 if (int.TryParse(Console.ReadLine(), out int cropIdToRemove))
