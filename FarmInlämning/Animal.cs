@@ -16,9 +16,18 @@
         
         }
 
-        public void Feed(Crop crop)
+        public void Feed(Crop crop, int quantity)
         {
-
+            if (AcceptableCropTypes == crop.GetCropType() && crop.GetCropQuantity() >= quantity)
+            {
+                
+                crop.SetCropQuantity(crop.GetCropQuantity() - quantity);
+                Console.WriteLine($"{Name} has been fed with {quantity} of {crop.cropsName}.");
+            }
+            else
+            {
+                Console.WriteLine($"Not enough quantity of crops for hungry {Name}.");
+            }
         }
 
 

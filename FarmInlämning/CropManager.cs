@@ -71,7 +71,6 @@ namespace FarmInlämning
             else
             {
                 int index = 1;
-                //Console.WriteLine("Here are the avaliable crops: ");
                 foreach (Crop crop in crops)
                 {
                     Console.WriteLine($"Crop: {index}, Name: {crop.cropsName}, Crop Type: {crop.GetCropType()} Qauntity: {crop.GetCropQuantity()}, CropID: {crop.GetCropId()}");

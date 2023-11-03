@@ -222,19 +222,7 @@ namespace FarmInlämning
 
                                 if (int.TryParse(quantityInput, out int quantity) && quantity > 0)
                                 {
-                                    if (quantity <= selectedCrop.GetCropQuantity())
-                                    {
-                                        selectedCrop.SetCropQuantity(selectedCrop.GetCropQuantity() - quantity);
-
-                                        Console.WriteLine($"{selectedAnimal.AnimalsName} has been fed with {quantity}, of {selectedCrop.cropsName}.");
-                                        Console.WriteLine($"There is {selectedCrop.GetCropQuantity()} of {selectedCrop.cropsName} left. ");
-                                        
-                                    }
-                                    else
-                                    {
-                                        Console.WriteLine($"There is not enough quantity of {selectedCrop.cropsName} left. ");
-                                        Console.WriteLine($"There is only {selectedCrop.GetCropQuantity()}, of {selectedCrop.cropsName} left.");
-                                    }
+                                   selectedAnimal.Feed(selectedCrop, quantity);
                                     break;
                                 }
                                 else
