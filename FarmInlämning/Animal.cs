@@ -2,10 +2,8 @@
 {
     internal class Animal : Entity
     {
-       private string Species { get; set; }
+        private string Species { get; set; }
         private string AcceptableCropTypes { get; set; }
-
-        public string AnimalName { get; set; }
 
         public Animal(string aName, int aId, string aSpecies, string aAcceptableCropTypes)
             : base(aName, aId)
