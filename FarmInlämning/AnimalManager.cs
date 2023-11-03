@@ -230,6 +230,11 @@ namespace FarmInlämning
                                     Console.WriteLine("Invalid input. Please enter a valid positive integer quantity.");
                                 }
                             }
+                            else 
+                            {
+                                Console.WriteLine($"{selectedAnimal.AnimalsName} does not eat {selectedCrop.cropsName}.");
+                            }
+
                         }
                         else
                         {
