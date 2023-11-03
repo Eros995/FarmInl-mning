@@ -17,11 +17,11 @@ namespace FarmInlämning
         public CropManager()
         {
             
-            crops.Add(new Crop("Seeds", 1000,  "Plant", 500));
-            crops.Add(new Crop("Carrot", 1001, "Vegetable", 200));
-            crops.Add(new Crop("Wheat", 1002, "Plant", 150));
-            crops.Add(new Crop("Hay", 1003, "Plant", 250));
-            crops.Add(new Crop("Apple", 1004, "Fruit", 450));
+            crops.Add(new Crop("Seeds", 1,  "Plant", 500));
+            crops.Add(new Crop("Carrot", 2, "Vegetable", 200));
+            crops.Add(new Crop("Wheat", 3, "Plant", 150));
+            crops.Add(new Crop("Hay", 4, "Plant", 250));
+            crops.Add(new Crop("Apple", 5, "Fruit", 450));
             
 
 
@@ -68,7 +68,7 @@ namespace FarmInlämning
             {
                 Console.WriteLine("No crops available!");
             }
-            else
+            else 
             {
                 int index = 1;
                 foreach (Crop crop in crops)

@@ -15,12 +15,12 @@ namespace FarmInlämning
         List<Animal> animals = new List<Animal>();
         public AnimalManager(CropManager cropManager)
         {
-            animals.Add(new Animal("Carl" , 123, "Goat", "Plant"));
-            animals.Add(new Animal("Megan", 124, "Horse", "Vegetable"));
-            animals.Add(new Animal("Bob", 125, "Cow", "Plant"));
-            animals.Add(new Animal("Jake", 127, "Cow", "Plant"));
-            animals.Add(new Animal("John", 128, "Chicken", "Plant"));
-            animals.Add(new Animal("Trump", 129, "Pig", "Fruit"));
+            animals.Add(new Animal("Carl" , 1, "Goat", "Plant"));
+            animals.Add(new Animal("Megan", 2, "Horse", "Vegetable"));
+            animals.Add(new Animal("Bob", 3, "Cow", "Plant"));
+            animals.Add(new Animal("Jake", 4, "Cow", "Plant"));
+            animals.Add(new Animal("John", 5, "Chicken", "Plant"));
+            animals.Add(new Animal("Trump", 6, "Pig", "Fruit"));
           
             availableCrops = cropManager.GetCrops();
         }
@@ -249,7 +249,7 @@ namespace FarmInlämning
                 }
             }
         }
-
+        
                               
          
         private void ViewCropList()
