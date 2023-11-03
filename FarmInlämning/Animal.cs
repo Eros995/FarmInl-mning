@@ -31,10 +31,11 @@
         }
 
 
-        public override void GetDescription()
+        public override string GetDescription()
         {
             string description = "Name: " + Name + "Id: "+ Id + "Type: " + Species + "Food: " + AcceptableCropTypes;
             Console.WriteLine(description);
+            return description;
         }
 
         public int GetAnimalId()

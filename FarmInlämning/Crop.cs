@@ -24,10 +24,11 @@ namespace FarmInlämning
             Quantity = aQuantity;
         }
 
-        public override void GetDescription()
+        public override string GetDescription()
         {
             string description = "Name: " + Name + "Id: "+ Id + "Type: " + CropType + "Amount: " + Quantity;
             Console.WriteLine(description);
+            return description;
         }
 
         public string cropsName

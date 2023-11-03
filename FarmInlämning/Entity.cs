@@ -17,7 +17,7 @@ namespace FarmInlämning
             Id = aId;
         }
 
-        public abstract void GetDescription();
+        public abstract string GetDescription();
 
         
     }
